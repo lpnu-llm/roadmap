@@ -1,0 +1,28 @@
+## Subtopics
+
+- Pairwise preference data: prompts, chosen responses, and rejected responses
+- Direct Preference Optimization (DPO)
+- Reference policies, preference strength, and the beta parameter
+- Related objectives such as IPO, KTO, ORPO, and SimPO
+- Preference-data quality and annotation disagreement
+- Over-optimization, style bias, and reproducible open recipes
+
+## Reading
+
+- [Direct Preference Optimization: Your Language Model is Secretly a Reward Model](https://arxiv.org/abs/2305.18290)
+- [Tülu 3: Pushing Frontiers in Open Language Model Post-Training](https://arxiv.org/abs/2411.15124)
+
+## Resources
+
+- [TRL DPO trainer](https://huggingface.co/docs/trl/dpo_trainer)
+
+## Assignment
+
+1. Compare supervised fine-tuning and DPO on the same task and base model. Analyze which outputs improve, regress, or become over-stylized, and inspect sensitivity to beta.
+2. * Implement the DPO loss directly, verify it against a library implementation, and compare DPO with one related preference objective under a matched compute budget.
+
+## Extra topics
+
+- Present the derivation of DPO from the KL-constrained reinforcement-learning objective.
+- Research preference optimization with binary, scalar, or unpaired feedback.
+- Study length bias, verbosity, and preference-data contamination.
