@@ -1,15 +1,10 @@
 ## Subtopics
 
-- Distributional semantics
-- Sparse count vectors and pointwise mutual information
-- Dense word embeddings
-- Word2Vec: skip-gram and continuous bag-of-words
-- Negative sampling
-- GloVe
+- Distributional semantics and PMI
+- Sparse and dense representations
+- Word2Vec, negative sampling, and GloVe
 - fastText and subword information
-- Similarity, analogy, and nearest-neighbor evaluation
-- Bag-of-embeddings for text classification
-- Bias and limitations of static embeddings
+- Similarity, analogy, and bias evaluation
 
 ## Reading
 
@@ -25,9 +20,9 @@
 
 ## Assignment
 
-1. Explore pretrained word embeddings in a notebook. Test nearest neighbors, analogies, rare words, and examples that reveal social or cultural bias.
-2. Train a text classifier with a bag-of-embeddings representation. Compare it with bag-of-n-grams, especially with training sets of at most 500 examples.
-3. * Train Word2Vec or fastText embeddings on your own corpus and evaluate them with intrinsic tests and one downstream task.
+1. **Probe pretrained word embeddings.** Explore pretrained word embeddings in a notebook. Test nearest neighbors, analogies, rare words, and examples that reveal social or cultural bias.
+2. **Classify with bag-of-embeddings.** Train a text classifier with a bag-of-embeddings representation. Compare it with bag-of-n-grams, especially with training sets of at most 500 examples.
+3. * **Train corpus-specific word embeddings.** Train Word2Vec or fastText embeddings on your own corpus and evaluate them with intrinsic tests and one downstream task.
 
 ## Extra topics
 

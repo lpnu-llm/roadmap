@@ -1,13 +1,13 @@
 ## Subtopics
 
-- Policy, action, trajectory, reward, and advantage for language generation
-- Reinforcement Learning from AI Feedback (RLAIF)
-- Constitutional AI and critique-revision data
-- Reinforcement Learning with Verifiable Rewards (RLVR)
-- Rule-based verifiers for mathematics, code, and structured outputs
-- Group Relative Policy Optimization (GRPO)
-- Reward sparsity, KL control, entropy, and response-length growth
-- Reliable evaluation against reward hacking
+- Language-generation RL fundamentals
+- Reinforcement learning from AI feedback
+- Constitutional AI
+- Reinforcement learning with verifiable rewards
+- Math, code, and structured-output verifiers
+- Group Relative Policy Optimization
+- Reward sparsity, KL, and entropy
+- Reward-hacking evaluation
 
 ## Reading
 
@@ -22,8 +22,8 @@
 
 ## Assignment
 
-1. Run GRPO on a small model and a verifiable task such as a GSM8K subset. Track reward, task accuracy, KL divergence, entropy, response length, and malformed outputs.
-2. * Build both an AI-feedback reward and a deterministic verifier for one task. Compare RLAIF and RLVR for sample efficiency, robustness, and reward hacking.
+1. **Train with verifiable rewards.** Run GRPO on a small model and a verifiable task such as a GSM8K subset. Track reward, task accuracy, KL divergence, entropy, response length, and malformed outputs.
+2. * **Compare RLAIF and RLVR.** Build both an AI-feedback reward and a deterministic verifier for one task. Compare RLAIF and RLVR for sample efficiency, robustness, and reward hacking.
 
 ## Extra topics
 

@@ -1,15 +1,10 @@
 ## Subtopics
 
-- Recurrent computation and hidden state
-- Elman recurrent neural networks
-- Training through time
-- Vanishing and exploding gradients
-- Gradient clipping
-- Long short-term memory (LSTM)
-- Gated recurrent units (GRU)
-- Stacked and bidirectional recurrent networks
-- Simple recurrent unit variants
-- Recurrent language-model training and generation
+- Recurrent hidden-state computation
+- Backpropagation through time
+- Vanishing gradients and gradient clipping
+- LSTM and GRU cells
+- Recurrent language modeling and generation
 
 ## Reading
 
@@ -24,9 +19,9 @@
 
 ## Assignment
 
-1. Implement an Elman RNN language model and train it on a small corpus. Plot training and validation loss, apply gradient clipping, and generate samples.
-2. Replace the recurrent cell with an LSTM or GRU. Compare perplexity, training speed, gradient behavior, and long-context predictions.
-3. * Implement an LSTM cell from basic tensor operations and check its output against a framework implementation.
+1. **Train an Elman language model.** Implement an Elman RNN language model and train it on a small corpus. Plot training and validation loss, apply gradient clipping, and generate samples.
+2. **Compare gated recurrent cells.** Replace the recurrent cell with an LSTM or GRU. Compare perplexity, training speed, gradient behavior, and long-context predictions.
+3. * **Implement an LSTM cell.** Implement an LSTM cell from basic tensor operations and check its output against a framework implementation.
 
 ## Extra topics
 

@@ -1,12 +1,11 @@
 ## Subtopics
 
-- Choosing between continual pretraining, full fine-tuning, and PEFT
-- Connecting data engineering, supervised tuning, preference tuning, and RL
-- Matching LoRA or QLoRA to memory and serving limits
-- Evaluating quality, robustness, safety, and general-capability retention
-- Tracking data, models, adapters, rewards, and experiment lineage
-- Designing an end-to-end post-training recipe
-- Open research questions and responsible deployment
+- Pretraining, full tuning, and PEFT
+- End-to-end post-training pipelines
+- LoRA and QLoRA constraints
+- Quality, safety, and capability retention
+- Experiment lineage
+- Responsible deployment
 
 ## Reading
 
@@ -21,8 +20,8 @@
 
 ## Assignment
 
-1. Design an end-to-end post-training plan for a small domain model. Specify the data pipeline, training stages, compute budget, evaluation matrix, safety checks, rollback criteria, and expected trade-offs. Present the plan and defend each choice.
-2. * Implement a small version of the plan with at least two training stages and one ablation. Produce a model card that reports gains, regressions, costs, and unresolved risks.
+1. **Design a post-training plan.** Design an end-to-end post-training plan for a small domain model. Specify the data pipeline, training stages, compute budget, evaluation matrix, safety checks, rollback criteria, and expected trade-offs. Present the plan and defend each choice.
+2. * **Implement and document the plan.** Implement a small version of the plan with at least two training stages and one ablation. Produce a model card that reports gains, regressions, costs, and unresolved risks.
 
 ## Extra topics
 

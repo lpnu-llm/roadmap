@@ -4,16 +4,12 @@ weeks: 2
 
 ## Subtopics
 
-- Autoregressive and diffusion-based language generation
-- Discrete diffusion and masked diffusion objectives
-- Forward corruption and reverse denoising processes
-- Noise schedules and timestep sampling
-- Parallel token prediction and iterative refinement
-- Confidence-based and entropy-based token unmasking
-- Text infilling, editing, and controllable generation
-- Block diffusion and mixed autoregressive-diffusion models
-- Speed, quality, diversity, and latency trade-offs
-- Current systems including LLaDA, Mercury, and Gemini Diffusion
+- Autoregressive, discrete, and masked diffusion
+- Corruption, denoising, and noise schedules
+- Parallel prediction and iterative unmasking
+- Infilling, editing, and controllable generation
+- Block and autoregressive–diffusion hybrids
+- Quality–latency and diversity trade-offs
 
 ## Reading
 
@@ -29,9 +25,9 @@ weeks: 2
 
 ## Assignment
 
-1. Implement and train a tiny masked-diffusion language model and a matched autoregressive baseline on the same corpus. Compare validation loss, sample quality, generation speed, and infilling ability.
-2. Implement at least three denoising schedules, such as random, confidence-based, and fixed left-to-right unmasking. Compare quality and latency across different numbers of denoising steps, and analyze common failure cases.
-3. * Implement a small block-diffusion decoder. Vary the block size and explain how it changes parallelism, KV-cache reuse, generation quality, and time to first token.
+1. **Compare diffusion and autoregression.** Implement and train a tiny masked-diffusion language model and a matched autoregressive baseline on the same corpus. Compare validation loss, sample quality, generation speed, and infilling ability.
+2. **Evaluate denoising schedules.** Implement at least three denoising schedules, such as random, confidence-based, and fixed left-to-right unmasking. Compare quality and latency across different numbers of denoising steps, and analyze common failure cases.
+3. * **Build a block-diffusion decoder.** Implement a small block-diffusion decoder. Vary the block size and explain how it changes parallelism, KV-cache reuse, generation quality, and time to first token.
 
 ## Extra topics
 

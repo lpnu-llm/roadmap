@@ -1,12 +1,11 @@
 ## Subtopics
 
-- Reasoning models trained with reinforcement learning
-- Cold-start supervised data followed by RL
-- Emergent long reasoning traces, self-checking, and backtracking
-- Verifiable tasks for mathematics and code
-- Reasoning accuracy, trace length, and compute cost
-- Distillation from RL-trained teachers
-- Failure modes: reward hacking, unreadable traces, and weak transfer
+- RL-trained reasoning models
+- Cold-start supervision and RL
+- Long traces and self-checking
+- Verifiable math and code tasks
+- Accuracy–compute trade-offs
+- Reward hacking and transfer
 
 ## Reading
 
@@ -15,8 +14,8 @@
 
 ## Assignment
 
-1. Compare a base, instruction-tuned, and RL-trained reasoning model on a small mathematics or code benchmark. Measure accuracy, token use, self-correction, and common failure types.
-2. * Reproduce a small RL reasoning experiment with a verifiable reward and test whether longer traces cause better answers or only higher reward.
+1. **Compare reasoning model stages.** Compare a base, instruction-tuned, and RL-trained reasoning model on a small mathematics or code benchmark. Measure accuracy, token use, self-correction, and common failure types.
+2. * **Test longer reasoning traces.** Reproduce a small RL reasoning experiment with a verifiable reward and test whether longer traces cause better answers or only higher reward.
 
 ## Extra topics
 

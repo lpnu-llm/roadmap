@@ -1,11 +1,10 @@
 ## Subtopics
 
-- Multilingual pretraining and language sampling
-- Cross-lingual transfer and alignment
-- Tokenizer fertility and cost differences
-- High-resource and low-resource performance gaps
+- Multilingual pretraining and transfer
+- Tokenizer fertility and cost
+- Resource-level performance gaps
 - Multilingual instruction tuning
-- Evaluation, benchmark coverage, and cultural context
+- Evaluation and cultural context
 
 ## Reading
 
@@ -20,8 +19,8 @@
 
 ## Assignment
 
-1. Evaluate one open model on the same tasks in English, Ukrainian, and one lower-resource language. Measure task quality, tokenizer fertility, token cost, and failure types; explain whether translation-based evaluation changes the conclusion.
-2. * Adapt a small model to a low-resource language using continued pretraining or parameter-efficient fine-tuning. Compare transfer quality, forgetting, token cost, and compute use against a translation-based baseline.
+1. **Measure multilingual performance gaps.** Evaluate one open model on the same tasks in English, Ukrainian, and one lower-resource language. Measure task quality, tokenizer fertility, token cost, and failure types; explain whether translation-based evaluation changes the conclusion.
+2. * **Adapt a low-resource model.** Adapt a small model to a low-resource language using continued pretraining or parameter-efficient fine-tuning. Compare transfer quality, forgetting, token cost, and compute use against a translation-based baseline.
 
 ## Extra topics
 

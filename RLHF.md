@@ -1,12 +1,11 @@
 ## Subtopics
 
-- Alignment goals: helpfulness, honesty, and harmlessness
-- Collecting human demonstrations and preferences
-- Training a reward model from pairwise comparisons
-- Proximal Policy Optimization (PPO) for language models
-- Reference-model KL penalties and adaptive KL control
-- Reward hacking, objective mismatch, and annotator disagreement
-- The full supervised fine-tuning, reward modeling, and RL pipeline
+- Helpfulness, honesty, and harmlessness
+- Human feedback collection
+- Pairwise reward modeling
+- PPO and KL control
+- Reward hacking and disagreement
+- End-to-end RLHF pipelines
 
 ## Reading
 
@@ -20,8 +19,8 @@
 
 ## Assignment
 
-1. Build a small preference dataset, train a pairwise reward model, and evaluate ranking accuracy by prompt category. Document disagreement and reward-model blind spots.
-2. * Run a small PPO update with a reference policy. Track reward, KL divergence, response length, and held-out quality, then identify signs of reward hacking.
+1. **Train a reward model.** Build a small preference dataset, train a pairwise reward model, and evaluate ranking accuracy by prompt category. Document disagreement and reward-model blind spots.
+2. * **Diagnose PPO reward hacking.** Run a small PPO update with a reference policy. Track reward, KL divergence, response length, and held-out quality, then identify signs of reward hacking.
 
 ## Extra topics
 

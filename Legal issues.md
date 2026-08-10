@@ -4,19 +4,15 @@ weeks: 3
 
 ## Subtopics
 
-- Legal and governance issue spotting across model development, release, procurement, and deployment
-- Jurisdiction, territorial scope, organizational role, intended purpose, and sector-specific rules
-- EU AI Act risk-based structure: prohibited practices, high-risk systems, transparency duties, and general-purpose AI models
-- NIST AI Risk Management Framework and Generative AI Profile as voluntary risk-management guidance, not legislation
-- Privacy and data protection: lawful handling, purpose limitation, data minimization, data-subject requests, and international transfers
-- Copyright questions for data collection, model training, retrieval, generated outputs, and human authorship
-- Text-and-data-mining rules, exceptions, opt-outs, and fair-use analysis; outcomes depend on jurisdiction and facts
-- Dataset provenance: sources, creators, consent signals, licenses, terms, transformations, attribution, and deletion history
-- Licenses for code, data, model weights, documentation, and outputs; these artifacts may have different terms
-- Open-source, open-weight, source-available, research-only, non-commercial, and responsible-AI licenses
-- Model-license review: grants, restrictions, acceptable-use terms, attribution, redistribution, derivatives, patents, and termination
-- Documentation and accountability: model cards, data cards, system cards, risk registers, incident records, and deployment decisions
-- Legal claims as evidence-based issue spotting: cite current primary sources, record assumptions, and seek qualified advice for real decisions
+- Legal issue spotting across development, release, procurement, and deployment
+- Jurisdiction, organizational roles, intended purpose, and sector rules
+- EU AI Act risk classes, transparency duties, and general-purpose models
+- NIST AI RMF and voluntary governance frameworks
+- Privacy, data protection, minimization, transfers, and data-subject rights
+- Copyright, text-and-data mining, fair use, and jurisdictional differences
+- Dataset provenance, consent signals, licenses, attribution, and deletion history
+- Artifact-specific licensing: grants, restrictions, redistribution, derivatives, and termination
+- Documentation, accountability, primary sources, assumptions, and legal advice
 
 ## Reading
 
@@ -38,11 +34,11 @@ weeks: 3
 
 ## Assignment
 
-1. Prepare a legal-and-governance issue map for a hypothetical LLM product operating in two chosen jurisdictions. State the product purpose, users, data flows, model source, and organizational roles. Use current primary sources to identify questions about AI regulation, privacy, copyright, consumer or sector rules, and contracts. Separate confirmed facts, assumptions, open questions, and items that require qualified local legal advice; do not present the map as a definitive legal opinion.
-2. Audit the provenance of a small training or fine-tuning dataset. Trace original sources, creators, transformations, collection dates, stated licenses, terms or consent signals, attribution requirements, and known gaps. Produce a machine-readable provenance table and a short data card. Treat missing or conflicting metadata as unresolved rather than assuming permission.
-3. Compare the exact license texts for three model packages: one permissively licensed package, one OpenRAIL-style package, and one community or custom-licensed package. Review code, weights, data, documentation, and output terms separately. Build a table of grants, use restrictions, redistribution, attribution, derivative-model terms, patent clauses, acceptable-use terms, and termination. Recommend a license-review workflow, not a universal conclusion about legality.
-4. Write a deployment memo using the EU AI Act and NIST AI RMF Generative AI Profile. Classify the scenario only as a reasoned working hypothesis, cite the relevant provisions, define evaluation thresholds, documentation, human oversight, incident escalation, and review dates, and explain how the answer could change with role, use, jurisdiction, or later guidance.
-5. * Analyze one narrow copyright question in model training, retrieval, or output generation. Compare an EU source with a U.S. source, distinguish legislation, agency guidance, pending disputes, and your own interpretation, and avoid transferring a conclusion from one jurisdiction to another.
+1. **Map Cross-Jurisdiction Legal Issues.** Prepare a legal-and-governance issue map for a hypothetical LLM product operating in two chosen jurisdictions. State the product purpose, users, data flows, model source, and organizational roles. Use current primary sources to identify questions about AI regulation, privacy, copyright, consumer or sector rules, and contracts. Separate confirmed facts, assumptions, open questions, and items that require qualified local legal advice; do not present the map as a definitive legal opinion.
+2. **Audit Training Dataset Provenance.** Audit the provenance of a small training or fine-tuning dataset. Trace original sources, creators, transformations, collection dates, stated licenses, terms or consent signals, attribution requirements, and known gaps. Produce a machine-readable provenance table and a short data card. Treat missing or conflicting metadata as unresolved rather than assuming permission.
+3. **Compare Model Package Licenses.** Compare the exact license texts for three model packages: one permissively licensed package, one OpenRAIL-style package, and one community or custom-licensed package. Review code, weights, data, documentation, and output terms separately. Build a table of grants, use restrictions, redistribution, attribution, derivative-model terms, patent clauses, acceptable-use terms, and termination. Recommend a license-review workflow, not a universal conclusion about legality.
+4. **Draft a Deployment Governance Memo.** Write a deployment memo using the EU AI Act and NIST AI RMF Generative AI Profile. Classify the scenario only as a reasoned working hypothesis, cite the relevant provisions, define evaluation thresholds, documentation, human oversight, incident escalation, and review dates, and explain how the answer could change with role, use, jurisdiction, or later guidance.
+5. * **Analyze a Narrow Copyright Question.** Analyze one narrow copyright question in model training, retrieval, or output generation. Compare an EU source with a U.S. source, distinguish legislation, agency guidance, pending disputes, and your own interpretation, and avoid transferring a conclusion from one jurisdiction to another.
 
 ## Extra topics
 

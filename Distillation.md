@@ -1,12 +1,10 @@
 ## Subtopics
 
-- Knowledge distillation for smaller and cheaper models
-- Logit, feature, and sequence-level distillation
+- Knowledge distillation
+- Logit, feature, and sequence-level methods
 - Temperature and soft targets
-- Teacher-generated instructions and responses
-- Distilling reasoning traces from stronger teachers
-- Data quality, teacher errors, and student capacity
-- Brief introduction to model merging and weight-space methods
+- Teacher-generated instructions and reasoning traces
+- Teacher quality and student capacity
 
 ## Reading
 
@@ -15,8 +13,8 @@
 
 ## Assignment
 
-1. Distill responses or reasoning traces from a strong open teacher into a small student. Compare against supervised fine-tuning on human-written data at a matched token budget.
-2. * Combine sequence-level and logit distillation, then run ablations on temperature and teacher confidence filtering.
+1. **Distill teacher-generated reasoning.** Distill responses or reasoning traces from a strong open teacher into a small student. Compare against supervised fine-tuning on human-written data at a matched token budget.
+2. * **Ablate distillation design choices.** Combine sequence-level and logit distillation, then run ablations on temperature and teacher confidence filtering.
 
 ## Extra topics
 

@@ -1,12 +1,12 @@
 ## Subtopics
 
-- Outcome reward models and process reward models
+- Outcome and process reward models
 - Pairwise, scalar, and step-level supervision
-- Reward-model calibration, uncertainty, and distribution shift
-- Best-of-n sampling and rejection sampling
-- Self-consistency and majority voting
-- Search, verification, and adaptive inference budgets
-- Accuracy, latency, token cost, and serving trade-offs
+- Calibration, uncertainty, and distribution shift
+- Best-of-n and rejection sampling
+- Self-consistency
+- Search and adaptive inference budgets
+- Accuracy, latency, and token trade-offs
 
 ## Reading
 
@@ -20,8 +20,8 @@
 
 ## Assignment
 
-1. Measure accuracy versus token budget on a reasoning benchmark using greedy decoding, self-consistency, and best-of-n selection with an outcome verifier or reward model.
-2. * Train a small process reward model from step labels and compare its search decisions, calibration, and final accuracy with an outcome reward model.
+1. **Measure test-time scaling trade-offs.** Measure accuracy versus token budget on a reasoning benchmark using greedy decoding, self-consistency, and best-of-n selection with an outcome verifier or reward model.
+2. * **Compare process and outcome rewards.** Train a small process reward model from step labels and compare its search decisions, calibration, and final accuracy with an outcome reward model.
 
 ## Extra topics
 

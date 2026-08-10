@@ -4,18 +4,17 @@ weeks: 4
 
 ## Subtopics
 
-- Inference workload phases: prefill and autoregressive decode
-- Service metrics: time to first token, time per output token, end-to-end latency, throughput, and tail latency
-- Realistic workload design: prompt lengths, output lengths, arrival rates, and concurrency
-- Model memory, activation memory, and KV-cache memory
-- Weight and activation quantization; calibration and quality checks
-- Static batching, dynamic batching, and continuous batching
-- KV-cache allocation, PagedAttention, prefix caching, and cache eviction
-- Request scheduling, fairness, admission control, and overload behavior
-- Tensor, pipeline, and data parallelism for inference
-- Speculative decoding, draft-model selection, and acceptance rate
-- Production serving engines and OpenAI-compatible APIs
-- Capacity planning and cost per generated token
+- Prefill and autoregressive decode
+- Latency, throughput, and tail metrics
+- Workload distributions, arrival rates, and concurrency
+- Model and KV-cache memory
+- Weight and activation quantization
+- Continuous batching and PagedAttention
+- Prefix caching and cache eviction
+- Scheduling, admission control, and overload behavior
+- Inference parallelism
+- Speculative decoding and acceptance rates
+- Capacity planning and cost per token
 
 ## Reading
 
@@ -33,11 +32,11 @@ weeks: 4
 
 ## Assignment
 
-1. Build a reproducible benchmark for one open model and serving engine. Generate workloads with at least three prompt-length distributions, three output lengths, and several concurrency levels. Report time to first token, time per output token, p50 and p95 end-to-end latency, output-token throughput, peak memory, and errors.
-2. Serve the same model in full precision and in at least two quantized configurations. Measure model size, GPU memory, throughput, and latency, and evaluate output quality on a fixed task set. Identify the quality-performance trade-off and any operators that remain unquantized.
-3. Compare a simple request-at-a-time server with continuous batching and PagedAttention. Add one repeated-prefix workload to test prefix caching. Plot latency and throughput against offered load, inspect KV-cache use and queue length, and explain the saturation point and tail-latency behavior.
-4. Add speculative decoding with a smaller draft model. Measure acceptance rate, target-model calls, latency, and throughput on at least two text domains and several draft lengths. Find the break-even workload and verify that the output distribution or task quality remains acceptable.
-5. * Write a capacity plan for a service with a stated traffic profile and latency objective. Select hardware, replicas, quantization, batching limits, and an overload policy; estimate monthly cost and support each choice with benchmark data.
+1. **Benchmark realistic serving workloads.** Build a reproducible benchmark for one open model and serving engine. Generate workloads with at least three prompt-length distributions, three output lengths, and several concurrency levels. Report time to first token, time per output token, p50 and p95 end-to-end latency, output-token throughput, peak memory, and errors.
+2. **Evaluate quantized serving trade-offs.** Serve the same model in full precision and in at least two quantized configurations. Measure model size, GPU memory, throughput, and latency, and evaluate output quality on a fixed task set. Identify the quality-performance trade-off and any operators that remain unquantized.
+3. **Compare advanced batching strategies.** Compare a simple request-at-a-time server with continuous batching and PagedAttention. Add one repeated-prefix workload to test prefix caching. Plot latency and throughput against offered load, inspect KV-cache use and queue length, and explain the saturation point and tail-latency behavior.
+4. **Measure speculative decoding gains.** Add speculative decoding with a smaller draft model. Measure acceptance rate, target-model calls, latency, and throughput on at least two text domains and several draft lengths. Find the break-even workload and verify that the output distribution or task quality remains acceptable.
+5. * **Plan production serving capacity.** Write a capacity plan for a service with a stated traffic profile and latency objective. Select hardware, replicas, quantization, batching limits, and an overload policy; estimate monthly cost and support each choice with benchmark data.
 
 ## Extra topics
 

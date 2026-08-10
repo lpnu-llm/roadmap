@@ -4,16 +4,14 @@ weeks: 3
 
 ## Subtopics
 
-- CUDA execution model: grids, thread blocks, warps, and streaming multiprocessors
-- Global, shared, local, and register memory
-- Coalesced access, memory transactions, bank conflicts, and synchronization
-- Warp divergence, occupancy, and latency hiding
-- Tiling and data reuse for matrix operations
-- Kernel launch overhead and operator fusion
-- Triton programs, program IDs, blocked tensors, masks, and pointer arithmetic
-- Triton compilation, autotuning, and numerical correctness
-- IO-aware exact attention and the FlashAttention algorithm
-- Profiling kernels for time, bandwidth, memory traffic, and bottlenecks
+- CUDA grids, blocks, warps, and SMs
+- GPU memory hierarchy and coalesced access
+- Bank conflicts, synchronization, divergence, and occupancy
+- Tiling and data reuse
+- Launch overhead and kernel fusion
+- Triton programming, autotuning, and correctness
+- IO-aware attention and FlashAttention
+- Kernel profiling and bottleneck analysis
 
 ## Reading
 
@@ -32,10 +30,10 @@ weeks: 3
 
 ## Assignment
 
-1. Write CUDA kernels for a vector reduction in two versions: a simple global-memory version and a tiled shared-memory version. Test non-power-of-two input sizes, verify results against PyTorch, and use a profiler to compare memory access, synchronization, occupancy, and runtime.
-2. Implement numerically stable fused softmax in Triton. Support masked rows and several non-power-of-two widths. Check outputs and gradients against PyTorch, then benchmark multiple shapes and explain when fusion helps and when it does not.
-3. Implement and autotune a blocked Triton matrix multiplication with a fused activation. Compare correctness and performance with PyTorch across shapes that include small, large, aligned, and unaligned dimensions. Use profiler data to explain the effect of block sizes, warps, and memory reuse.
-4. * Reproduce a small IO analysis of standard attention and FlashAttention. Measure runtime and peak memory over increasing sequence lengths, estimate high-bandwidth-memory reads and writes, and relate the measurements to the paper's IO-aware algorithm.
+1. **Optimize CUDA vector reduction.** Write CUDA kernels for a vector reduction in two versions: a simple global-memory version and a tiled shared-memory version. Test non-power-of-two input sizes, verify results against PyTorch, and use a profiler to compare memory access, synchronization, occupancy, and runtime.
+2. **Implement fused Triton softmax.** Implement numerically stable fused softmax in Triton. Support masked rows and several non-power-of-two widths. Check outputs and gradients against PyTorch, then benchmark multiple shapes and explain when fusion helps and when it does not.
+3. **Autotune Triton matrix multiplication.** Implement and autotune a blocked Triton matrix multiplication with a fused activation. Compare correctness and performance with PyTorch across shapes that include small, large, aligned, and unaligned dimensions. Use profiler data to explain the effect of block sizes, warps, and memory reuse.
+4. * **Analyze FlashAttention IO savings.** Reproduce a small IO analysis of standard attention and FlashAttention. Measure runtime and peak memory over increasing sequence lengths, estimate high-bandwidth-memory reads and writes, and relate the measurements to the paper's IO-aware algorithm.
 
 ## Extra topics
 

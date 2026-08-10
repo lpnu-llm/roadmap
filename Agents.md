@@ -4,15 +4,13 @@ weeks: 4
 
 ## Subtopics
 
-- Tool calls and structured function calling
-- Agent loops: observe, plan, act, and reflect
-- Planning, error recovery, and stopping conditions
-- Short-term and long-term memory
-- Skills and reusable workflows
-- Model Context Protocol (MCP)
-- Browser, coding, and software-engineering agents
+- Tool calling
+- Agent loops and recovery
+- Memory and skills
+- Model Context Protocol
+- Browser and coding agents
 - Multi-agent collaboration
-- Evaluation, observability, safety, and reliability
+- Safety and reliability evaluation
 
 ## Reading
 
@@ -32,11 +30,11 @@ weeks: 4
 
 ## Assignment
 
-1. Build a tool-calling assistant with at least three typed tools, including one tool that can fail. Validate arguments, handle tool errors, set stopping conditions, and compare it with a prompt-only baseline.
-2. Implement an agent loop with planning, execution traces, and bounded retries. Evaluate it on a fixed set of multi-step tasks and classify failures in planning, tool selection, execution, and verification.
-3. Add memory to the agent and compare no memory, summary memory, and retrieval memory. Measure task success, token cost, stale-memory errors, and information leakage across sessions.
-4. Build a repository or browser agent and evaluate it with task success, runtime, cost, and a human-preference rubric. Include logs that make every action auditable and test at least one safety boundary.
-5. * Implement two collaborating agents with different roles. Compare them with a single agent under the same model and token budget, and analyze coordination failures rather than reporting only average quality.
+1. **Build a resilient tool caller.** Build a tool-calling assistant with at least three typed tools, including one tool that can fail. Validate arguments, handle tool errors, set stopping conditions, and compare it with a prompt-only baseline.
+2. **Evaluate a bounded agent loop.** Implement an agent loop with planning, execution traces, and bounded retries. Evaluate it on a fixed set of multi-step tasks and classify failures in planning, tool selection, execution, and verification.
+3. **Compare agent memory strategies.** Add memory to the agent and compare no memory, summary memory, and retrieval memory. Measure task success, token cost, stale-memory errors, and information leakage across sessions.
+4. **Audit a practical agent.** Build a repository or browser agent and evaluate it with task success, runtime, cost, and a human-preference rubric. Include logs that make every action auditable and test at least one safety boundary.
+5. * **Test multi-agent collaboration.** Implement two collaborating agents with different roles. Compare them with a single agent under the same model and token budget, and analyze coordination failures rather than reporting only average quality.
 
 ## Extra topics
 

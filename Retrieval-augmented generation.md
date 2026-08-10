@@ -4,14 +4,12 @@ weeks: 3
 
 ## Subtopics
 
-- Parametric and non-parametric memory
-- Sparse retrieval with BM25
-- Dense retrieval with bi-encoders and contrastive embeddings
-- Reranking with cross-encoders
-- Chunking, indexing, query rewriting, and hybrid retrieval
-- Grounded generation, citations, and citation faithfulness
-- Retrieval and end-to-end evaluation
-- Long-context failure modes
+- Sparse and dense retrieval
+- Reranking and hybrid retrieval
+- Chunking and indexing
+- Grounded generation and citations
+- End-to-end evaluation
+- Long-context failures
 
 ## Reading
 
@@ -28,10 +26,10 @@ weeks: 3
 
 ## Assignment
 
-1. Build BM25 and dense bi-encoder retrievers for the same corpus. Create a labeled query set and compare Recall@k, MRR, latency, and errors across query types.
-2. Build a small RAG assistant over a real corpus. Implement chunking, indexing, retrieval, answer generation, and source citations; document choices and provide a reproducible evaluation set.
-3. Evaluate answer correctness, retrieval recall, citation correctness, and citation completeness separately. Test context order and context length, then analyze unsupported answers and lost-in-the-middle failures.
-4. * Add a cross-encoder reranker, hybrid retrieval, query rewriting, or Self-RAG-style critique. Run an ablation study and report quality, latency, and cost trade-offs.
+1. **Compare sparse and dense retrieval.** Build BM25 and dense bi-encoder retrievers for the same corpus. Create a labeled query set and compare Recall@k, MRR, latency, and errors across query types.
+2. **Build a grounded RAG assistant.** Build a small RAG assistant over a real corpus. Implement chunking, indexing, retrieval, answer generation, and source citations; document choices and provide a reproducible evaluation set.
+3. **Audit RAG quality dimensions.** Evaluate answer correctness, retrieval recall, citation correctness, and citation completeness separately. Test context order and context length, then analyze unsupported answers and lost-in-the-middle failures.
+4. * **Ablate advanced retrieval methods.** Add a cross-encoder reranker, hybrid retrieval, query rewriting, or Self-RAG-style critique. Run an ablation study and report quality, latency, and cost trade-offs.
 
 ## Extra topics
 

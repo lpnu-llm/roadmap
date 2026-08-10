@@ -1,13 +1,10 @@
 ## Subtopics
 
-- What natural language processing studies
-- Levels of language: morphology, syntax, semantics, discourse, and pragmatics
-- Common NLP tasks and applications
-- Rule-based, statistical, neural, and foundation-model approaches
+- Linguistic levels and ambiguity
+- Core NLP tasks and applications
+- Symbolic, statistical, and neural approaches
 - Corpora, annotation, and data splits
-- Ambiguity and variability in human language
-- Basic evaluation and error analysis
-- Bias, privacy, environmental cost, and responsible use
+- Evaluation, error analysis, and responsible use
 
 ## Reading
 
@@ -22,9 +19,9 @@
 
 ## Assignment
 
-1. Choose one NLP task and a public dataset. Write a short problem statement, inspect the labels and data splits, define suitable metrics, and document at least five data-quality or ethical risks.
-2. Build a simple non-neural baseline or rule-based system for the task. Evaluate it and analyze at least 20 errors.
-3. * Create a small annotation guide, collect labels from at least two annotators, and measure and explain their agreement.
+1. **Analyze an NLP dataset.** Choose one NLP task and a public dataset. Write a short problem statement, inspect the labels and data splits, define suitable metrics, and document at least five data-quality or ethical risks.
+2. **Build a rule baseline.** Build a simple non-neural baseline or rule-based system for the task. Evaluate it and analyze at least 20 errors.
+3. * **Measure annotation agreement.** Create a small annotation guide, collect labels from at least two annotators, and measure and explain their agreement.
 
 ## Extra topics
 

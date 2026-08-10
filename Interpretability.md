@@ -4,15 +4,14 @@ weeks: 3
 
 ## Subtopics
 
-- Goals and limits of interpretability: explanation, prediction, debugging, auditing, and scientific understanding
-- Behavioral tests and attribution methods: feature visualization, saliency, gradients, integrated gradients, and causal interventions
-- Probing classifiers: control tasks, selectivity, representation quality, and the difference between correlation and use
-- Logit lens and tuned lens: reading intermediate predictions and recognizing layer-normalization and basis-alignment limits
-- Attention analysis: attention patterns, attention rollout, head ablation, and why attention alone is not an explanation
-- Mechanistic interpretability: circuits, induction heads, activation patching, path patching, and causal tracing
-- Polysemantic neurons, superposition, sparse autoencoders, feature steering, and feature evaluation
-- Scaling interpretability methods from small models to large models
-- Reproducibility, cherry-picking, human interpretation bias, and honest reporting of negative results
+- Interpretability goals: explanation, debugging, auditing, and scientific understanding
+- Behavioral tests, attribution methods, and causal interventions
+- Probing classifiers: controls, selectivity, and representation quality
+- Logit and tuned lenses: intermediate predictions and alignment limits
+- Attention analysis, rollout, visualization, and head ablation
+- Mechanistic interpretability: circuits, activation patching, and causal tracing
+- Superposition, sparse autoencoders, feature steering, and feature evaluation
+- Scaling, reproducibility, cherry-picking, and human interpretation bias
 
 ## Reading
 
@@ -30,10 +29,10 @@ weeks: 3
 
 ## Assignment
 
-1. Choose a small open transformer and one linguistic or factual feature. Collect positive examples, negative examples, and matched controls. Train a linear probe on activations from several layers. Report accuracy, a selectivity or control-task result, dataset limitations, and why probe success does not prove that the model uses the feature.
-2. Use the logit lens and attention visualization on at least 20 prompts with a clear expected continuation. Compare two layers and two attention heads. Then ablate or patch one selected head or activation. Present before-and-after outputs and separate descriptive observations from causal evidence.
-3. Reproduce one small circuit result, such as an induction-head pattern, with TransformerLens or equivalent hooks. Define a quantitative metric, run at least one causal intervention and one negative control, save the code and random seeds, and write a short failure analysis.
-4. * Train or use a sparse autoencoder on one layer of a small model. Evaluate at least five learned features with activating examples, intervention tests, and counterexamples. Discuss reconstruction error, sparsity, feature splitting, and feature mixing.
+1. **Probe Linguistic or Factual Features.** Choose a small open transformer and one linguistic or factual feature. Collect positive examples, negative examples, and matched controls. Train a linear probe on activations from several layers. Report accuracy, a selectivity or control-task result, dataset limitations, and why probe success does not prove that the model uses the feature.
+2. **Test Attention Causally.** Use the logit lens and attention visualization on at least 20 prompts with a clear expected continuation. Compare two layers and two attention heads. Then ablate or patch one selected head or activation. Present before-and-after outputs and separate descriptive observations from causal evidence.
+3. **Reproduce a Transformer Circuit.** Reproduce one small circuit result, such as an induction-head pattern, with TransformerLens or equivalent hooks. Define a quantitative metric, run at least one causal intervention and one negative control, save the code and random seeds, and write a short failure analysis.
+4. * **Evaluate Sparse Autoencoder Features.** Train or use a sparse autoencoder on one layer of a small model. Evaluate at least five learned features with activating examples, intervention tests, and counterexamples. Discuss reconstruction error, sparsity, feature splitting, and feature mixing.
 
 ## Extra topics
 

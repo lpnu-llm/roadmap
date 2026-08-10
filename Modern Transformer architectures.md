@@ -4,16 +4,12 @@ weeks: 4
 
 ## Subtopics
 
-- Learned and sinusoidal positional embeddings
-- Rotary position embeddings (RoPE), ALiBi, and long-context extensions
-- Pre-norm blocks, RMSNorm, SwiGLU, and gated MLPs
-- Multi-query attention and grouped-query attention
-- KV-cache size and inference cost
-- FlashAttention and input/output-aware exact attention
-- Sparse and sliding-window attention
-- Mixture-of-experts layers, routing, capacity, and load balancing
-- Dense, sparse, and hybrid Transformer designs
-- Architectural ablations: quality, memory, throughput, and stability
+- Learned, sinusoidal, RoPE, ALiBi encodings
+- Pre-norm, RMSNorm, SwiGLU, and gated MLPs
+- Multi-query and grouped-query attention; KV caches
+- Flash, sparse, and sliding-window attention
+- Mixture-of-experts routing and load balancing
+- Quality–efficiency and stability ablations
 
 ## Reading
 
@@ -32,11 +28,11 @@ weeks: 4
 
 ## Assignment
 
-1. Add RoPE to a small decoder-only Transformer. Compare it with learned positional embeddings at training lengths and at longer test lengths, and plot validation loss by position.
-2. Replace LayerNorm and the standard MLP with RMSNorm and SwiGLU. Run a controlled ablation with the same data, parameter budget, and training steps; report loss, stability, and throughput.
-3. Implement multi-query attention or grouped-query attention. Verify it against standard multi-head attention, then compare KV-cache memory and decoding speed at several sequence lengths.
-4. Implement a small top-k mixture-of-experts MLP with an auxiliary load-balancing loss. Measure expert use, dropped tokens, training stability, and validation loss against a dense model with a similar compute budget.
-5. * Reproduce one modern architecture change in a small language model and run a careful ablation. Control parameter count and training compute, use several random seeds, and report throughput, peak memory, and validation loss.
+1. **Evaluate rotary position embeddings.** Add RoPE to a small decoder-only Transformer. Compare it with learned positional embeddings at training lengths and at longer test lengths, and plot validation loss by position.
+2. **Ablate normalization and MLPs.** Replace LayerNorm and the standard MLP with RMSNorm and SwiGLU. Run a controlled ablation with the same data, parameter budget, and training steps; report loss, stability, and throughput.
+3. **Benchmark efficient attention variants.** Implement multi-query attention or grouped-query attention. Verify it against standard multi-head attention, then compare KV-cache memory and decoding speed at several sequence lengths.
+4. **Build sparse expert routing.** Implement a small top-k mixture-of-experts MLP with an auxiliary load-balancing loss. Measure expert use, dropped tokens, training stability, and validation loss against a dense model with a similar compute budget.
+5. * **Reproduce a modern architecture change.** Reproduce one modern architecture change in a small language model and run a careful ablation. Control parameter count and training compute, use several random seeds, and report throughput, peak memory, and validation loss.
 
 ## Extra topics
 

@@ -1,16 +1,11 @@
 ## Subtopics
 
-- Causal versus masked language modeling
-- Bidirectional context
-- Mask selection and the pretraining-finetuning mismatch
-- BERT architecture and pretraining objectives
-- Special tokens and input segments
-- Fine-tuning for sequence classification
-- Token classification and part-of-speech tagging
-- Named-entity recognition
-- RoBERTa and improved training recipes
-- Modern encoder models such as ModernBERT and Ettin
-- Encoder-only models versus decoder-only models
+- Masked objectives and bidirectional context
+- BERT architecture and input encoding
+- Mask-selection pretraining mismatch
+- Sequence and token classification
+- RoBERTa and modern encoder models
+- Encoder-only versus decoder-only models
 
 ## Reading
 
@@ -26,9 +21,9 @@
 
 ## Assignment
 
-1. Fine-tune a small masked language model for token classification or part-of-speech tagging. Report token-level metrics and analyze errors by token type and sequence length.
-2. Probe a pretrained masked model by comparing predictions under different masks and contexts. Document examples of syntax, semantics, factual recall, and failure cases.
-3. * Continue masked-language-model pretraining on a small domain corpus, then measure whether it improves the downstream task.
+1. **Fine-tune a masked token classifier.** Fine-tune a small masked language model for token classification or part-of-speech tagging. Report token-level metrics and analyze errors by token type and sequence length.
+2. **Probe contextual mask predictions.** Probe a pretrained masked model by comparing predictions under different masks and contexts. Document examples of syntax, semantics, factual recall, and failure cases.
+3. * **Continue domain-specific masked pretraining.** Continue masked-language-model pretraining on a small domain corpus, then measure whether it improves the downstream task.
 
 ## Extra topics
 

@@ -1,11 +1,10 @@
 ## Subtopics
 
-- Parameter-efficient fine-tuning (PEFT)
-- Prompt tuning, prefix tuning, and learned virtual tokens
-- Bottleneck adapters inside Transformer layers
-- Trainable parameter count, memory use, and task quality
-- Adapter composition and serving many tasks from one base model
-- When PEFT can match or beat full fine-tuning
+- Parameter-efficient fine-tuning
+- Soft prompts and prefix tuning
+- Bottleneck adapters
+- Parameter, memory, and quality trade-offs
+- Adapter composition and multitask serving
 
 ## Reading
 
@@ -18,8 +17,8 @@
 
 ## Assignment
 
-1. Fine-tune the same small model with a soft prompt and an adapter on one task. Compare quality, trainable parameters, peak memory, training time, and checkpoint size.
-2. * Compose or route two task-specific adapters in one base model and test whether task switching causes interference.
+1. **Compare prompts and adapters.** Fine-tune the same small model with a soft prompt and an adapter on one task. Compare quality, trainable parameters, peak memory, training time, and checkpoint size.
+2. * **Test multi-adapter task switching.** Compose or route two task-specific adapters in one base model and test whether task switching causes interference.
 
 ## Extra topics
 

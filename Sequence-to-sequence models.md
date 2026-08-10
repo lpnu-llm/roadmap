@@ -4,17 +4,11 @@ weeks: 2
 
 ## Subtopics
 
-- Conditional sequence generation
-- Encoder-decoder architecture
-- Variable-length inputs and outputs
+- Conditional encoder-decoder generation
 - Teacher forcing and exposure bias
+- Attention, masking, and alignment
 - Greedy and beam-search decoding
-- Neural machine translation
-- The fixed-vector bottleneck
-- Additive and multiplicative attention
-- Attention masks and alignment
-- BLEU and task-specific evaluation
-- Copying, coverage, and unknown words
+- BLEU, copying, and coverage
 
 ## Reading
 
@@ -30,9 +24,9 @@ weeks: 2
 
 ## Assignment
 
-1. Implement and train an RNN encoder-decoder for a small translation or transliteration task. Use teacher forcing, masks, validation loss, and reproducible data splits.
-2. Add an attention mechanism and beam search. Compare the non-attentive and attentive models with BLEU or character error rate, speed, and qualitative error analysis. Visualize several attention alignments.
-3. * Add a copy or coverage mechanism and evaluate it on rare words, names, or long inputs.
+1. **Train an RNN encoder-decoder.** Implement and train an RNN encoder-decoder for a small translation or transliteration task. Use teacher forcing, masks, validation loss, and reproducible data splits.
+2. **Add attention and beam search.** Add an attention mechanism and beam search. Compare the non-attentive and attentive models with BLEU or character error rate, speed, and qualitative error analysis. Visualize several attention alignments.
+3. * **Implement copy or coverage.** Add a copy or coverage mechanism and evaluate it on rare words, names, or long inputs.
 
 ## Extra topics
 

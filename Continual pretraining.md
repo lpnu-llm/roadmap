@@ -1,11 +1,10 @@
 ## Subtopics
 
-- Continual pretraining for domain and task adaptation
-- Domain-adaptive pretraining (DAPT) and task-adaptive pretraining (TAPT)
-- Causal language-model objectives and domain corpora
-- Vocabulary shift, learning-rate choice, and data mixing
-- Catastrophic forgetting and general-capability retention
-- Choosing continual pretraining, instruction tuning, or both
+- Domain- and task-adaptive pretraining
+- Causal objectives and domain corpora
+- Vocabulary shift, learning rates, and data mixing
+- Catastrophic forgetting
+- Pretraining versus instruction tuning
 
 ## Reading
 
@@ -18,8 +17,8 @@
 
 ## Assignment
 
-1. Continue pretraining a small model on a domain corpus, then compare it with pure supervised fine-tuning on the same downstream tasks. Measure domain gains and general-task regressions.
-2. * Repeat the experiment with a mixed domain/general corpus and tune the mixing ratio to reduce forgetting without losing the domain gain.
+1. **Compare domain adaptation methods.** Continue pretraining a small model on a domain corpus, then compare it with pure supervised fine-tuning on the same downstream tasks. Measure domain gains and general-task regressions.
+2. * **Tune data mixing ratios.** Repeat the experiment with a mixed domain/general corpus and tune the mixing ratio to reduce forgetting without losing the domain gain.
 
 ## Extra topics
 

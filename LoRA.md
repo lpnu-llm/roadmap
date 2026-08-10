@@ -1,11 +1,10 @@
 ## Subtopics
 
-- Low-rank updates to frozen weight matrices
-- Rank, scaling factor, dropout, and target modules
-- LoRA for attention and MLP layers
-- Merging adapters into base weights
-- Memory, speed, and quality trade-offs
-- Multi-adapter training and serving
+- Low-rank frozen-weight updates
+- Rank, scaling, dropout, and targets
+- Attention and MLP adapters
+- Adapter merging
+- Memory–quality trade-offs
 
 ## Reading
 
@@ -17,8 +16,8 @@
 
 ## Assignment
 
-1. Train LoRA adapters with at least two ranks on the same task and token budget. Compare task quality, trainable parameters, memory, speed, and merged-model output.
-2. * Analyze the singular values of learned updates across layers and relate effective rank to task performance.
+1. **Compare LoRA rank settings.** Train LoRA adapters with at least two ranks on the same task and token budget. Compare task quality, trainable parameters, memory, speed, and merged-model output.
+2. * **Analyze learned update ranks.** Analyze the singular values of learned updates across layers and relate effective rank to task performance.
 
 ## Extra topics
 

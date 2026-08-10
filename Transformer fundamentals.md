@@ -4,18 +4,12 @@ weeks: 2
 
 ## Subtopics
 
-- Limits of recurrent sequence models
 - Token and position embeddings
-- Queries, keys, values, and scaled dot-product attention
-- Self-attention and cross-attention
+- Scaled dot-product self-attention
+- Multi-head and cross-attention
 - Causal and padding masks
-- Multi-head attention
-- Feed-forward blocks
-- Residual connections and layer normalization
-- Encoder, decoder, and encoder-decoder Transformers
-- Autoregressive output heads
-- Training and inference paths
-- Computational and memory complexity
+- Feed-forward blocks, residuals, and normalization
+- Encoder, decoder, and computational complexity
 
 ## Reading
 
@@ -31,9 +25,9 @@ weeks: 2
 
 ## Assignment
 
-1. Implement scaled dot-product attention and multi-head self-attention in PyTorch. Test tensor shapes, padding masks, causal masks, and attention probabilities.
-2. Build and train a minimal decoder-only Transformer on a small corpus. Report parameter count, loss, perplexity, sample outputs, and an estimate of attention memory use as sequence length changes.
-3. * Implement an encoder-decoder Transformer and compare it with the recurrent sequence-to-sequence model on the same task.
+1. **Implement multi-head self-attention.** Implement scaled dot-product attention and multi-head self-attention in PyTorch. Test tensor shapes, padding masks, causal masks, and attention probabilities.
+2. **Train a decoder-only Transformer.** Build and train a minimal decoder-only Transformer on a small corpus. Report parameter count, loss, perplexity, sample outputs, and an estimate of attention memory use as sequence length changes.
+3. * **Build an encoder-decoder Transformer.** Implement an encoder-decoder Transformer and compare it with the recurrent sequence-to-sequence model on the same task.
 
 ## Extra topics
 

@@ -1,13 +1,11 @@
 ## Subtopics
 
-- AdamW, momentum, weight decay, and parameter groups
-- Learning-rate warmup, decay schedules, and batch size
-- Gradient accumulation, clipping, mixed precision, and loss scaling
-- Instability, loss spikes, NaNs, and recovery
-- Training and validation loss curves
-- Overfitting, forgetting, and early stopping
-- Scaling laws under fixed data and compute budgets
-- Reproducibility, checkpoints, and experiment tracking
+- AdamW and parameter groups
+- Learning-rate schedules and batching
+- Gradient clipping and mixed precision
+- Instability diagnosis and recovery
+- Overfitting and early stopping
+- Scaling laws and reproducibility
 
 ## Reading
 
@@ -23,8 +21,8 @@
 
 ## Assignment
 
-1. Fine-tune a small model across a controlled learning-rate and warmup sweep. Plot training loss, validation loss, gradient norm, throughput, and task quality, then diagnose unstable runs.
-2. * Fit a small scaling curve across model size, data amount, or training steps and predict the best configuration for a fixed compute budget. Test the prediction with one extra run.
+1. **Diagnose fine-tuning instability.** Fine-tune a small model across a controlled learning-rate and warmup sweep. Plot training loss, validation loss, gradient norm, throughput, and task quality, then diagnose unstable runs.
+2. * **Fit and test scaling laws.** Fit a small scaling curve across model size, data amount, or training steps and predict the best configuration for a fixed compute budget. Test the prediction with one extra run.
 
 ## Extra topics
 

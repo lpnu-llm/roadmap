@@ -1,14 +1,10 @@
 ## Subtopics
 
-- The Markov assumption
-- Unigram, bigram, and higher-order models
-- Count estimation and maximum likelihood
-- Start, end, and unknown-word symbols
-- Sparse counts and out-of-vocabulary words
-- Laplace, add-k, and interpolation smoothing
-- Backoff and Kneser-Ney smoothing
-- Perplexity and held-out evaluation
-- Efficient storage and lookup
+- Markov assumption and n-gram orders
+- Count-based maximum-likelihood estimation
+- Unknown-word handling and sparse counts
+- Smoothing, interpolation, and backoff
+- Kneser-Ney smoothing and perplexity
 
 ## Reading
 
@@ -22,9 +18,9 @@
 
 ## Assignment
 
-1. Implement unigram, bigram, and trigram language models. Add unknown-word handling and at least one smoothing method.
-2. Evaluate each model with held-out perplexity and generated samples. Study the effects of n-gram order, training-set size, vocabulary size, and smoothing.
-3. * Implement interpolated Kneser-Ney smoothing and compare it with add-k smoothing and a standard toolkit.
+1. **Build smoothed n-gram models.** Implement unigram, bigram, and trigram language models. Add unknown-word handling and at least one smoothing method.
+2. **Evaluate n-gram model tradeoffs.** Evaluate each model with held-out perplexity and generated samples. Study the effects of n-gram order, training-set size, vocabulary size, and smoothing.
+3. * **Implement interpolated Kneser-Ney smoothing.** Implement interpolated Kneser-Ney smoothing and compare it with add-k smoothing and a standard toolkit.
 
 ## Extra topics
 

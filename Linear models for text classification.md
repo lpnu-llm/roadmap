@@ -1,14 +1,10 @@
 ## Subtopics
 
-- Text classification tasks and label design
-- One-hot, bag-of-words, and bag-of-n-grams representations
-- Text preprocessing and vocabulary construction
-- Naive Bayes and logistic regression
-- Linear support vector machines
+- Bag-of-words and n-gram features
+- Vocabulary construction and preprocessing
+- Naive Bayes, logistic regression, and linear SVMs
 - Regularization and feature selection
-- Train, validation, and test splits
-- Precision, recall, F1, and confusion matrices
-- Sentiment analysis and error analysis
+- F1, confusion matrices, and error analysis
 
 ## Reading
 
@@ -22,9 +18,9 @@
 
 ## Assignment
 
-1. Train bag-of-words and bag-of-n-grams classifiers on a movie review dataset. Compare Naive Bayes, logistic regression, and a linear SVM with the same data split.
-2. Study the effects of vocabulary size, maximum n-gram size, preprocessing, and regularization. Report F1 scores and analyze at least 20 errors.
-3. * Implement logistic regression and its gradient update without using a machine-learning model class.
+1. **Compare linear text classifiers.** Train bag-of-words and bag-of-n-grams classifiers on a movie review dataset. Compare Naive Bayes, logistic regression, and a linear SVM with the same data split.
+2. **Tune text classification features.** Study the effects of vocabulary size, maximum n-gram size, preprocessing, and regularization. Report F1 scores and analyze at least 20 errors.
+3. * **Implement logistic regression manually.** Implement logistic regression and its gradient update without using a machine-learning model class.
 
 ## Extra topics
 

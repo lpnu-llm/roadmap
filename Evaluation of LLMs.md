@@ -4,18 +4,15 @@ weeks: 4
 
 ## Subtopics
 
-- Intrinsic evaluation: cross-entropy, perplexity, and bits per byte
-- Task metrics: exact match, F1, pass@k, preference rate, and calibration
-- Benchmark design, task coverage, and construct validity
-- Saturated benchmarks such as MMLU, GSM8K, and HumanEval
-- Current benchmarks such as GPQA, MMLU-Pro, LiveCodeBench, and SWE-bench Verified
-- Prompt sensitivity, few-shot selection, decoding settings, and reproducibility
-- Data contamination, benchmark leakage, and dynamic test sets
-- Statistical uncertainty, paired tests, confidence intervals, and effect sizes
-- Human evaluation design and inter-annotator agreement
-- LLM-as-judge uses and position, verbosity, and self-preference biases
-- Cost, latency, memory, energy use, and quality trade-offs
-- Error analysis, reporting, and evaluation governance
+- Intrinsic, task, preference, and calibration metrics
+- Benchmark coverage, validity, saturation, dynamic tests
+- Prompt/decoding sensitivity and reproducibility
+- Contamination and leakage
+- Uncertainty, paired tests, confidence intervals, and effect sizes
+- Human evaluation and annotator agreement
+- LLM-as-judge biases
+- Quality, cost, latency, memory, and energy trade-offs
+- Error analysis, reporting, and governance
 
 ## Reading
 
@@ -35,11 +32,11 @@ weeks: 4
 
 ## Assignment
 
-1. Evaluate at least two open language models on three tasks with `lm-evaluation-harness`. Fix the prompts and decoding settings, report uncertainty and cost, and perform an error analysis instead of reporting only average scores.
-2. Audit one public benchmark for contamination risk and validity. Inspect its source, dates, duplicates, answer format, and likely web exposure, then explain what conclusions the benchmark can and cannot support.
-3. Build a small evaluation set for one clearly defined capability. Write task and annotation rules, create simple and difficult examples, establish a baseline, and measure agreement between at least two annotators.
-4. Run an LLM-as-judge experiment on paired model answers. Randomize answer order, test verbosity bias and self-preference, compare the judge with human labels, and report agreement with confidence intervals.
-5. * Reproduce and critique a published LLM evaluation result. Match the original setup as closely as possible, test at least two reasonable protocol changes, and show whether the model ranking remains stable.
+1. **Benchmark open language models.** Evaluate at least two open language models on three tasks with `lm-evaluation-harness`. Fix the prompts and decoding settings, report uncertainty and cost, and perform an error analysis instead of reporting only average scores.
+2. **Audit benchmark validity.** Audit one public benchmark for contamination risk and validity. Inspect its source, dates, duplicates, answer format, and likely web exposure, then explain what conclusions the benchmark can and cannot support.
+3. **Build a capability evaluation.** Build a small evaluation set for one clearly defined capability. Write task and annotation rules, create simple and difficult examples, establish a baseline, and measure agreement between at least two annotators.
+4. **Audit an LLM judge.** Run an LLM-as-judge experiment on paired model answers. Randomize answer order, test verbosity bias and self-preference, compare the judge with human labels, and report agreement with confidence intervals.
+5. * **Reproduce an evaluation result.** Reproduce and critique a published LLM evaluation result. Match the original setup as closely as possible, test at least two reasonable protocol changes, and show whether the model ranking remains stable.
 
 ## Extra topics
 

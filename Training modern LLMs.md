@@ -4,20 +4,14 @@ weeks: 2
 
 ## Subtopics
 
-- The end-to-end pretraining pipeline
-- Web-scale corpus collection and licensing
-- Language identification, quality filtering, and data mixtures
-- Exact and approximate deduplication
-- Benchmark decontamination
-- Token budgets and data documentation
-- AdamW, learning-rate warmup, schedules, and gradient clipping
-- Mixed precision, gradient accumulation, and checkpointing
-- Loss curves, instability, and recovery
+- Pretraining data collection and licensing
+- Filtering, mixtures, and deduplication
+- Decontamination and data documentation
+- AdamW, warmup, schedules, and clipping
+- Mixed precision, accumulation, and checkpointing
 - Scaling laws and compute-optimal training
-- Multi-stage training and continual pretraining
-- Data, tensor, pipeline, and expert parallelism
-- ZeRO and fully sharded data parallelism
-- Throughput, model FLOP utilization, and reproducibility
+- Distributed sharding and parallelism
+- Throughput, utilization, and reproducibility
 
 ## Reading
 
@@ -38,9 +32,9 @@ weeks: 2
 
 ## Assignment
 
-1. Build a small pretraining-data pipeline from raw documents. Add language or quality filtering, deduplication, train-validation splitting, and contamination checks. Produce a data card with token counts, licenses, removed examples, and known risks.
-2. Train several small causal language models under a fixed compute budget. Track throughput, learning rate, gradient norm, validation loss, and checkpoints; fit a simple scaling curve and propose a model-size/data-size plan for a larger budget.
-3. * Given a fixed multi-GPU cluster, design a distributed training plan with memory estimates, communication costs, checkpoint recovery, and expected model FLOP utilization. Validate one part with FSDP or another sharding tool if hardware is available.
+1. **Build a pretraining data pipeline.** Build a small pretraining-data pipeline from raw documents. Add language or quality filtering, deduplication, train-validation splitting, and contamination checks. Produce a data card with token counts, licenses, removed examples, and known risks.
+2. **Fit compute-budget scaling curves.** Train several small causal language models under a fixed compute budget. Track throughput, learning rate, gradient norm, validation loss, and checkpoints; fit a simple scaling curve and propose a model-size/data-size plan for a larger budget.
+3. * **Design distributed LLM training.** Given a fixed multi-GPU cluster, design a distributed training plan with memory estimates, communication costs, checkpoint recovery, and expected model FLOP utilization. Validate one part with FSDP or another sharding tool if hardware is available.
 
 ## Extra topics
 

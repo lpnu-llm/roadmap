@@ -4,13 +4,11 @@ weeks: 2
 
 ## Subtopics
 
-- Hallucination types and causes
-- Factuality, faithfulness, and attribution
-- Confidence and probability calibration
-- Uncertainty estimation and semantic consistency
-- Abstention and selective answering
-- Detection with external evidence and self-checks
-- Mitigation through retrieval, verification, and constrained generation
+- Hallucination causes and types
+- Factuality and attribution
+- Confidence calibration and uncertainty
+- Abstention
+- Evidence-based detection and verification
 
 ## Reading
 
@@ -25,9 +23,9 @@ weeks: 2
 
 ## Assignment
 
-1. Build a factuality evaluation set for one domain. Split answers into atomic claims, label support with reliable sources, compare at least two models or prompting methods, and report precision with a clear failure taxonomy.
-2. Ask a model to answer questions with a confidence score and the option to abstain. Measure calibration error, draw reliability and risk-coverage curves, and choose an abstention threshold for a stated error cost.
-3. * Add retrieval grounding, SelfCheckGPT-style sampling, or an external verifier. Measure how the method changes factuality, calibration, coverage, latency, and cost.
+1. **Benchmark domain factuality.** Build a factuality evaluation set for one domain. Split answers into atomic claims, label support with reliable sources, compare at least two models or prompting methods, and report precision with a clear failure taxonomy.
+2. **Calibrate confidence and abstention.** Ask a model to answer questions with a confidence score and the option to abstain. Measure calibration error, draw reliability and risk-coverage curves, and choose an abstention threshold for a stated error cost.
+3. * **Evaluate hallucination mitigation.** Add retrieval grounding, SelfCheckGPT-style sampling, or an external verifier. Measure how the method changes factuality, calibration, coverage, latency, and cost.
 
 ## Extra topics
 

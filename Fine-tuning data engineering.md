@@ -1,13 +1,12 @@
 ## Subtopics
 
-- Corpus construction from raw documents and instruction records
-- Quality filtering, language identification, and safety filters
+- Corpus and instruction-data construction
+- Quality and safety filtering
 - Exact and near-duplicate removal
-- Synthetic instruction and response generation
-- Dataset mixing, sampling, balancing, and curriculum design
-- Benchmark decontamination and leakage detection
-- Train, validation, and test splits grouped by source
-- Dataset documentation, lineage, licenses, and failure cases
+- Synthetic instruction generation
+- Mixtures and source-grouped splits
+- Benchmark decontamination
+- Documentation and lineage
 
 ## Reading
 
@@ -23,8 +22,8 @@
 
 ## Assignment
 
-1. Build a small fine-tuning data pipeline from raw text and instruction examples. Add filtering, deduplication, source-grouped splits, synthetic-data labels, and benchmark decontamination. Publish a data card with decisions and known failure cases.
-2. * Run a controlled ablation of raw, filtered, deduplicated, and synthetic-augmented datasets under a matched token budget. Measure both task quality and memorization or leakage.
+1. **Build a data pipeline.** Build a small fine-tuning data pipeline from raw text and instruction examples. Add filtering, deduplication, source-grouped splits, synthetic-data labels, and benchmark decontamination. Publish a data card with decisions and known failure cases.
+2. * **Ablate data processing stages.** Run a controlled ablation of raw, filtered, deduplicated, and synthetic-augmented datasets under a matched token budget. Measure both task quality and memorization or leakage.
 
 ## Extra topics
 

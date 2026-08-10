@@ -4,14 +4,12 @@ weeks: 2
 
 ## Subtopics
 
-- Autonomous research loops: propose, implement, run, evaluate, and revise
-- Experiment budgets, baselines, controls, and stopping rules
-- Machine learning experimentation agents
-- Literature search and evidence-grounded hypothesis generation
-- Automated evaluators and verifiable discovery
-- Reproducibility, provenance, and research logs
-- Human oversight, safety, and dual-use risks
-- Agents for scientific discovery
+- Autonomous experiment loops
+- Budgets, controls, and stopping
+- Evidence-grounded hypotheses
+- Automated evaluation and verification
+- Reproducibility and provenance
+- Oversight and dual-use risks
 
 ## Reading
 
@@ -30,9 +28,9 @@ weeks: 2
 
 ## Assignment
 
-1. Build a bounded autoresearch loop for a small machine learning problem. The agent must propose one change at a time, edit code, run a fixed-budget experiment, keep or reject the change using a held-out metric, and write a complete experiment log. Compare it with random search and a simple human-designed baseline.
-2. Give an agent a small published experiment to reproduce or a controlled MLAgentBench-style task. Audit dependency setup, data provenance, metric correctness, leakage, failed runs, compute cost, and reproducibility; then write a report separating verified findings from unverified claims.
-3. * Add parallel hypothesis generation and an automated evaluator inspired by FunSearch or AlphaEvolve. Use independent verification, compare with the single-agent loop under the same compute budget, and analyze false discoveries.
+1. **Build a bounded research loop.** Build a bounded autoresearch loop for a small machine learning problem. The agent must propose one change at a time, edit code, run a fixed-budget experiment, keep or reject the change using a held-out metric, and write a complete experiment log. Compare it with random search and a simple human-designed baseline.
+2. **Audit experimental reproducibility.** Give an agent a small published experiment to reproduce or a controlled MLAgentBench-style task. Audit dependency setup, data provenance, metric correctness, leakage, failed runs, compute cost, and reproducibility; then write a report separating verified findings from unverified claims.
+3. * **Test parallel hypothesis discovery.** Add parallel hypothesis generation and an automated evaluator inspired by FunSearch or AlphaEvolve. Use independent verification, compare with the single-agent loop under the same compute budget, and analyze false discoveries.
 
 ## Extra topics
 

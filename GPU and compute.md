@@ -4,16 +4,13 @@ weeks: 3
 
 ## Subtopics
 
-- GPU architecture: streaming multiprocessors, CUDA cores, Tensor Cores, and parallel execution
-- Memory hierarchy: registers, shared memory, caches, and high-bandwidth device memory
-- Memory capacity, memory bandwidth, and compute throughput
-- Arithmetic intensity and roofline analysis
-- Transformer resource accounting: parameters, gradients, optimizer states, activations, and temporary buffers
-- Numerical formats: FP32, TF32, FP16, BF16, FP8, and accumulation precision
-- Mixed-precision training and loss scaling
-- Activation checkpointing as a compute-memory trade-off
-- Reliable benchmarking: warm-up, synchronization, repeated runs, and hardware utilization
-- Profiling GPU time and peak memory use
+- GPU execution architecture and Tensor Cores
+- Memory hierarchy, capacity, and bandwidth
+- Compute throughput, arithmetic intensity, and rooflines
+- Transformer memory and FLOP accounting
+- Low-precision formats and mixed-precision training
+- Activation checkpointing trade-offs
+- GPU benchmarking and profiling
 
 ## Reading
 
@@ -32,10 +29,10 @@ weeks: 3
 
 ## Assignment
 
-1. Make a resource-accounting tool for a transformer layer and a complete decoder-only model. Given model dimensions, sequence length, batch size, optimizer, and numeric format, report parameter, gradient, optimizer-state, activation, and KV memory, plus forward-pass FLOPs. Validate at least three estimates with measurements from a framework profiler and explain the remaining error.
-2. Benchmark matrix multiplications across at least six shapes and three numeric formats. Use warm-up runs and GPU synchronization, calculate achieved FLOPs and arithmetic intensity, and compare the results with the GPU's bandwidth and peak compute roofline. Explain which cases are memory-bound or compute-bound.
-3. Train the same small transformer with FP32, mixed precision, and mixed precision plus activation checkpointing. Compare peak GPU memory, examples or tokens per second, wall-clock time, and final loss. Check gradients for non-finite values and explain the speed, memory, and numerical trade-offs.
-4. * Profile one transformer block with Nsight Compute. Identify its three most expensive kernels, inspect memory traffic and Tensor Core use, and propose one optimization supported by profiler evidence.
+1. **Profile transformer resource use.** Make a resource-accounting tool for a transformer layer and a complete decoder-only model. Given model dimensions, sequence length, batch size, optimizer, and numeric format, report parameter, gradient, optimizer-state, activation, and KV memory, plus forward-pass FLOPs. Validate at least three estimates with measurements from a framework profiler and explain the remaining error.
+2. **Benchmark GPU matrix multiplication.** Benchmark matrix multiplications across at least six shapes and three numeric formats. Use warm-up runs and GPU synchronization, calculate achieved FLOPs and arithmetic intensity, and compare the results with the GPU's bandwidth and peak compute roofline. Explain which cases are memory-bound or compute-bound.
+3. **Compare precision and checkpointing.** Train the same small transformer with FP32, mixed precision, and mixed precision plus activation checkpointing. Compare peak GPU memory, examples or tokens per second, wall-clock time, and final loss. Check gradients for non-finite values and explain the speed, memory, and numerical trade-offs.
+4. * **Profile transformer block kernels.** Profile one transformer block with Nsight Compute. Identify its three most expensive kernels, inspect memory traffic and Tensor Core use, and propose one optimization supported by profiler evidence.
 
 ## Extra topics
 

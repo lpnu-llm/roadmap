@@ -1,11 +1,10 @@
 ## Subtopics
 
-- Fine-tuning through a quantized frozen base model
-- 4-bit NormalFloat (NF4) and double quantization
-- Paged optimizers and memory spikes
-- Compute dtype and quantization dtype
-- VRAM, speed, stability, and quality trade-offs
-- Saving, loading, and merging quantized adapters
+- Quantized-base LoRA fine-tuning
+- NF4 and double quantization
+- Paged optimizers
+- Compute and quantization dtypes
+- VRAM–quality trade-offs
 
 ## Reading
 
@@ -18,8 +17,8 @@
 
 ## Assignment
 
-1. Fine-tune one model with LoRA in full or half precision and with QLoRA in 4-bit precision. Use the same data and settings, then compare peak VRAM, throughput, quality, and failure cases.
-2. * Test NF4 against another 4-bit quantization choice and measure how quantization error changes by layer before and after training.
+1. **Compare LoRA and QLoRA.** Fine-tune one model with LoRA in full or half precision and with QLoRA in 4-bit precision. Use the same data and settings, then compare peak VRAM, throughput, quality, and failure cases.
+2. * **Measure layerwise quantization error.** Test NF4 against another 4-bit quantization choice and measure how quantization error changes by layer before and after training.
 
 ## Extra topics
 

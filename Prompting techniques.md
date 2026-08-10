@@ -5,11 +5,10 @@ weeks: 3
 ## Subtopics
 
 - Zero-shot and few-shot prompting
-- System prompts, roles, instructions, and prompt templates
-- Choosing and ordering demonstrations
-- Chain-of-thought, decomposition, and self-verification
-- Structured outputs and constrained generation
-- Prompt sensitivity, robustness, and evaluation
+- Prompt templates and demonstrations
+- Chain-of-thought and decomposition
+- Structured outputs
+- Prompt robustness and evaluation
 
 ## Reading
 
@@ -25,10 +24,10 @@ weeks: 3
 
 ## Assignment
 
-1. Design zero-shot, few-shot, and instruction-based prompts for three different tasks. Use a fixed test set and report accuracy, output validity, token use, and common failure types.
-2. Measure sensitivity to demonstration choice and order. Run several prompt permutations, summarize the variance, and explain which examples help or hurt performance.
-3. Compare direct answers, chain-of-thought prompting, and decomposition on a reasoning task. Add a structured output schema and measure both task accuracy and schema validity.
-4. * Build a small automatic prompt search method, compare it with a manually designed prompt under the same evaluation budget, and analyze overfitting to the development set.
+1. **Compare prompting strategies.** Design zero-shot, few-shot, and instruction-based prompts for three different tasks. Use a fixed test set and report accuracy, output validity, token use, and common failure types.
+2. **Test demonstration sensitivity.** Measure sensitivity to demonstration choice and order. Run several prompt permutations, summarize the variance, and explain which examples help or hurt performance.
+3. **Compare reasoning prompts.** Compare direct answers, chain-of-thought prompting, and decomposition on a reasoning task. Add a structured output schema and measure both task accuracy and schema validity.
+4. * **Automate prompt search.** Build a small automatic prompt search method, compare it with a manually designed prompt under the same evaluation budget, and analyze overfitting to the development set.
 
 ## Extra topics
 

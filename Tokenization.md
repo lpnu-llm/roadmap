@@ -1,15 +1,10 @@
 ## Subtopics
 
-- Unicode, bytes, characters, words, and subwords
-- Rule-based word tokenization
-- Byte Pair Encoding (BPE)
-- WordPiece and unigram language-model tokenization
-- Byte-level tokenization
-- Vocabulary design and special tokens
-- Tokenizer training, encoding, and decoding
-- Fertility and the tokenization tax across languages
-- Tokenization failure modes
-- Tokenization-free models
+- Unicode, bytes, words, and subwords
+- BPE, WordPiece, and unigram tokenization
+- Byte-level tokenization and special tokens
+- Training, encoding, and decoding
+- Multilingual fertility and failure modes
 
 ## Reading
 
@@ -25,9 +20,9 @@
 
 ## Assignment
 
-1. Implement a BPE tokenizer from scratch, including training, encoding, decoding, and tests for round-trip correctness.
-2. Compare the fertility of at least three existing tokenizers on English, Ukrainian, Georgian, and Thai. Explain the main differences and show difficult examples.
-3. * Extend the tokenizer to use byte-level input and measure how this changes unknown-token handling and sequence length.
+1. **Implement a BPE tokenizer.** Implement a BPE tokenizer from scratch, including training, encoding, decoding, and tests for round-trip correctness.
+2. **Compare multilingual tokenizer fertility.** Compare the fertility of at least three existing tokenizers on English, Ukrainian, Georgian, and Thai. Explain the main differences and show difficult examples.
+3. * **Add byte-level tokenization.** Extend the tokenizer to use byte-level input and measure how this changes unknown-token handling and sequence length.
 
 ## Extra topics
 

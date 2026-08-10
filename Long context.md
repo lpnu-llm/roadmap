@@ -4,16 +4,14 @@ weeks: 2
 
 ## Subtopics
 
-- Why context length is limited by training data, position encoding, memory, and compute
+- Context limits: data, positions, memory, and compute
 - RoPE, ALiBi, and learned positional embeddings
-- Context extension with position interpolation, RoPE scaling, and YaRN
-- Long-context training, sequence packing, and length curricula
-- Attention and KV-cache cost as sequence length grows
-- Failure modes: recency bias, primacy bias, distraction, and lost-in-the-middle behavior
-- Evaluation beyond a single needle-in-a-haystack test
-- RULER tasks, perplexity by position, retrieval accuracy, and task-specific evaluation
-- Effective context length versus advertised context length
-- External memory, retrieval, summarization, and context compression
+- Position interpolation, RoPE scaling, and YaRN
+- Long-context training and length curricula
+- Attention and KV-cache scaling
+- Long-context failure modes
+- Effective-context evaluation: RULER, retrieval, and perplexity
+- External memory, retrieval, and context compression
 
 ## Reading
 
@@ -30,9 +28,9 @@ weeks: 2
 
 ## Assignment
 
-1. Evaluate at least two models on synthetic retrieval and aggregation tasks over increasing context lengths. Move relevant evidence across the beginning, middle, and end of each prompt. Report accuracy, latency, and peak memory, and explain where nominal context length differs from effective context length.
-2. Extend a small model beyond its trained context with one RoPE scaling method. Compare the original and extended models using short-context perplexity, long-context perplexity by token position, and RULER-style tasks. Measure memory and runtime, and document both gains and regressions.
-3. * Build an external-memory baseline using retrieval or recursive summarization. Under the same token budget, compare it with direct long-context prompting on answer quality, latency, and cost; analyze cases where stored or retrieved evidence is wrong.
+1. **Measure effective context length.** Evaluate at least two models on synthetic retrieval and aggregation tasks over increasing context lengths. Move relevant evidence across the beginning, middle, and end of each prompt. Report accuracy, latency, and peak memory, and explain where nominal context length differs from effective context length.
+2. **Extend model context safely.** Extend a small model beyond its trained context with one RoPE scaling method. Compare the original and extended models using short-context perplexity, long-context perplexity by token position, and RULER-style tasks. Measure memory and runtime, and document both gains and regressions.
+3. * **Compare external memory approaches.** Build an external-memory baseline using retrieval or recursive summarization. Under the same token budget, compare it with direct long-context prompting on answer quality, latency, and cost; analyze cases where stored or retrieved evidence is wrong.
 
 ## Extra topics
 

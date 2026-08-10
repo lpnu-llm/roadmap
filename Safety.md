@@ -4,16 +4,15 @@ weeks: 3
 
 ## Subtopics
 
-- Safety goals, threat models, assets, actors, trust boundaries, and risk severity
-- Capability evaluation, misuse evaluation, robustness evaluation, and dangerous-capability testing
-- Human and automated red teaming; coverage, reproducibility, and responsible disclosure
-- Jailbreaks, adversarial suffixes, encoding attacks, multilingual attacks, and adaptive attackers
-- Prompt injection: direct and indirect injection, instruction hierarchy, data-control separation, and untrusted content
-- Agent security: tool permissions, least privilege, sandboxing, approval gates, secret handling, and excessive agency
-- Data poisoning, backdoors, compromised dependencies, model supply chains, and artifact integrity
-- Defenses: input and output filters, structured interfaces, isolation, monitoring, rate limits, and incident response
-- Measuring defense utility, false positives, false negatives, attack adaptation, and defense in depth
-- Safe experiment design: synthetic targets, local environments, no real secrets, and no attacks on systems without permission
+- Threat models: assets, actors, boundaries, and risk severity
+- Capability, misuse, robustness, and dangerous-capability evaluations
+- Human and automated red teaming; coverage and disclosure
+- Jailbreaks, adversarial prompts, encoding attacks, and adaptive attackers
+- Direct and indirect prompt injection; untrusted-content isolation
+- Agent security: least privilege, sandboxing, approvals, and secret handling
+- Poisoning, backdoors, supply-chain security, and artifact integrity
+- Layered defenses, utility measurement, monitoring, and incident response
+- Safe experiments: synthetic targets, local environments, authorized systems
 
 ## Reading
 
@@ -31,10 +30,10 @@ weeks: 3
 
 ## Assignment
 
-1. Write a threat model for a document-reading LLM agent that can search files and call one external tool. Identify assets, trust boundaries, attacker goals, abuse cases, and likely failure impact. Map at least five risks to OWASP or MITRE ATLAS and propose testable security requirements.
-2. Run an authorized red-team exercise against a local model or a sandboxed demo. Build at least 30 tests covering jailbreaks, direct prompt injection, indirect prompt injection, sensitive-data requests, and unsafe tool calls. Record success criteria and results, and do not use real credentials or target third-party systems.
-3. Implement two layers of defense for the tested system, such as strict tool schemas, least-privilege permissions, content isolation, approval gates, or output validation. Re-run the same suite, measure attack success and task utility, inspect false positives, and explain what remains unsafe.
-4. * Create a small adaptive attack-and-defense study. Let the attack change after observing the first defense, add new held-out tests, and compare at least three defense configurations. Report uncertainty and avoid claiming that passing the suite proves safety.
+1. **Map Agent Security Threats.** Write a threat model for a document-reading LLM agent that can search files and call one external tool. Identify assets, trust boundaries, attacker goals, abuse cases, and likely failure impact. Map at least five risks to OWASP or MITRE ATLAS and propose testable security requirements.
+2. **Run an Authorized Red Team.** Run an authorized red-team exercise against a local model or a sandboxed demo. Build at least 30 tests covering jailbreaks, direct prompt injection, indirect prompt injection, sensitive-data requests, and unsafe tool calls. Record success criteria and results, and do not use real credentials or target third-party systems.
+3. **Layer and Evaluate Defenses.** Implement two layers of defense for the tested system, such as strict tool schemas, least-privilege permissions, content isolation, approval gates, or output validation. Re-run the same suite, measure attack success and task utility, inspect false positives, and explain what remains unsafe.
+4. * **Study Adaptive Attack Defenses.** Create a small adaptive attack-and-defense study. Let the attack change after observing the first defense, add new held-out tests, and compare at least three defense configurations. Report uncertainty and avoid claiming that passing the suite proves safety.
 
 ## Extra topics
 
