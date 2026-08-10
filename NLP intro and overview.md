@@ -1,10 +1,11 @@
 ## Subtopics
 
-- Linguistic levels and ambiguity
 - Core NLP tasks and applications
+- Linguistic levels and ambiguity
+- Zipf's law
 - Symbolic, statistical, and neural approaches
 - Corpora, annotation, and data splits
-- Evaluation, error analysis, and responsible use
+- Evaluation
 
 ## Reading
 
@@ -19,12 +20,8 @@
 
 ## Assignment
 
-1. **Analyze an NLP dataset.** Choose one NLP task and a public dataset. Write a short problem statement, inspect the labels and data splits, define suitable metrics, and document at least five data-quality or ethical risks.
-2. **Build a rule baseline.** Build a simple non-neural baseline or rule-based system for the task. Evaluate it and analyze at least 20 errors.
-3. * **Measure annotation agreement.** Create a small annotation guide, collect labels from at least two annotators, and measure and explain their agreement.
+1. **Write a rule-based chat bot.** Imitate [ELIZA](https://en.wikipedia.org/wiki/ELIZA)
 
 ## Extra topics
 
-- NLP for low-resource languages
-- Participatory dataset design
-- The history of symbolic and statistical NLP
+- Georgetown-IBM experiment
