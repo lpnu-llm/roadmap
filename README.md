@@ -1,8 +1,11 @@
 # Course syllabus organization
 
-`Index.md` is the entry point. It contains courses and their topics in teaching order. Each topic is an Obsidian link to a separate Markdown page.
+This repository contains source files for https://lpnu-llm.github.io/roadmap/. The whole repository is a Markdown wiki in the Obsidian format.
 
-Keep topic details out of `Index.md`. Put them on the topic page instead.
+The site is redeployed on every push to the `main` branch.
+
+`Index.md` is the entry point. It contains courses and their topics in teaching order. Each topic is an Obsidian link to a separate Markdown page. A topic page should contain all the details of the topic. Some sections are required, as we use them to generate the index page.
+
 
 ## Topic page format
 
@@ -41,28 +44,14 @@ weeks: 2
 ---
 ```
 
-Do not add `weeks` for a one-week topic. A multi-week page uses the same sections as a one-week page; do not split it into weekly subsections.
-
 Each course should contain 15 weeks in total. The generator reads topic order from `Index.md` and uses `weeks` to make a topic span several schedule rows.
 
 ## Build the syllabus site
 
-Run:
+This is normally done on GitHub Actions when `main` is pushed. If you need to build locally, run:
 
 ```sh
 uv run build_syllabus.py
 ```
 
-This creates a generated `site/` directory containing the syllabus at `index.html` and one HTML page for every linked Markdown topic. Obsidian wiki links are converted to relative HTML links, so generated topic pages can reference each other. The source files are not changed.
-
-Use `--output` to choose the syllabus file and, implicitly, the directory for generated topic pages; use `--title` to change the page title:
-
-```sh
-uv run build_syllabus.py --output public/index.html --title "LLM Courses"
-```
-
-## Deploy to GitHub Pages
-
-The `Deploy GitHub Pages` workflow builds and deploys `site/` whenever `main` is pushed. It can also be run manually from the repository's **Actions** tab.
-
-Before the first deployment, open **Settings → Pages** in GitHub and set **Build and deployment → Source** to **GitHub Actions**. No deploy branch, secret, or personal access token is required; the workflow uses GitHub's built-in Pages permissions.
+This creates a generated `site/` directory containing the syllabus at `index.html` and one HTML page for every linked Markdown topic.
