@@ -186,7 +186,7 @@ def render_markdown_block(text: str) -> str:
                     item = item[2:].strip()
                 rendered = render_inline(item)
                 if hard:
-                    rendered = f'<span class="tag">optional hard</span> {rendered}'
+                    rendered = f'<span class="tag">hard</span> {rendered}'
                 items.append(rendered)
                 index += 1
             output.append("<ol>" + "".join(f"<li>{item}</li>" for item in items) + "</ol>")
@@ -220,7 +220,7 @@ def render_assignment_titles(text: str) -> str:
 
         rendered = f"<strong>{render_inline(title)}</strong>"
         if hard:
-            rendered = f'<span class="tag">optional hard</span> {rendered}'
+            rendered += ' <span class="tag">hard</span>'
         items.append(rendered)
 
     return "<ol>" + "".join(f"<li>{item}</li>" for item in items) + "</ol>"
@@ -334,7 +334,7 @@ body {
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
   line-height: 1.55;
 }
-a { color: var(--link); }
+a { color: var(--link); text-decoration: none; }
 a:visited { color: var(--visited); }
 header {
   display: flex;
@@ -367,12 +367,12 @@ h1 {
   margin: 0.5rem 0 1.2rem;
 }
 h2.course-title {
-  font-size: 1.35rem;
+  font-size: 1.85rem;
   line-height: 1.3;
   letter-spacing: 0.04em;
   margin: 2.8rem 0 0.8rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px dashed var(--line);
+  /*border-bottom: 1px dashed var(--line);*/
 }
 p.lead { max-width: 72ch; }
 ul { padding-left: 1.4rem; }
@@ -439,6 +439,10 @@ footer p { margin: 0.2rem 0; }
 
 def render_document(courses: list[Course], title: str, output_path: Path) -> str:
     course_html = "\n\n".join(render_course(course, output_path.parent) for course in courses)
+    course_links = "\n".join(
+        f'    <li><a href="#{slugify(course.title)}">{html.escape(course.title)}</a></li>'
+        for course in courses
+    )
     page_title = html.escape(title)
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -451,20 +455,29 @@ def render_document(courses: list[Course], title: str, output_path: Path) -> str
 </style>
 </head>
 <body>
-<header>
+<!-- header>
   <a class="site-title" href="#top">{page_title}</a>
   <nav><a href="#curriculum">curriculum</a></nav>
-</header>
+</header -->
 <main class="index" id="top">
   <h1>{page_title}</h1>
-  <p class="lead">Each course is organized as a 15-week sequence. Multi-week topics span several week rows.</p>
+  
+  <p class="lead">
+  This site provides syllabi and resources for the LLM specialization at Lviv
+  Polytechnic National University. The curriculum consists of seven semester-long
+  courses:
+</p>
+  
+  <ol>
+{course_links}
+  </ol>
+  <p class="lead">Each syllabus is organized into 15 weeks. This site is a work in progress.</p>
   <div id="curriculum">
 {course_html}
   </div>
 </main>
 <footer>
-  <p>{page_title} &middot; generated from <code>Index.md</code> and linked topic pages</p>
-  <p>Build with <code>uv run build_syllabus.py</code>.</p>
+  <p>(c) 2026 Lviv National Polytechnic University</p>
 </footer>
 </body>
 </html>
@@ -508,7 +521,7 @@ def markdown_body(source_path: Path, source_dir: Path) -> str:
     linked_text = render_markdown_links(text, source_path, source_dir)
     linked_text = re.sub(
         r"(?m)^(\d+\.)\s+\*\s+",
-        r'\1 <span class="tag">optional hard</span> ',
+        r'\1 <span class="tag">hard</span> ',
         linked_text,
     )
     return markdown.markdown(linked_text, extensions=["extra", "sane_lists"])
@@ -535,16 +548,16 @@ def render_topic_document(
 </style>
 </head>
 <body>
-<header>
+<!-- header>
   <a class="site-title" href="{index_url}">{html.escape(site_title)}</a>
   <nav><a href="{index_url}">curriculum</a></nav>
-</header>
+</header -->
 <main>
   <h1>{html.escape(page_title)}</h1>
 {body}
 </main>
 <footer>
-  <p>{html.escape(site_title)} &middot; generated from <code>{html.escape(topic.source_path.name)}</code></p>
+  <p>(c) 2026 Lviv National Polytechnic University</p>
 </footer>
 </body>
 </html>
@@ -597,7 +610,7 @@ def main() -> None:
     )
     _ = parser.add_argument(
         "--title",
-        default="LLM Specialization",
+        default="LPNU LLM Specialization",
         help="page and site title",
     )
     namespace = parser.parse_args()
