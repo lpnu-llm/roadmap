@@ -4,7 +4,7 @@ This repository contains source files for https://lpnu-llm.github.io/roadmap/. T
 
 The site is redeployed on every push to the `main` branch.
 
-`Index.md` is the entry point. It contains courses and their topics in teaching order. Each topic is an Obsidian link to a separate Markdown page. A topic page should contain all the details of the topic. Some sections are required, as we use them to generate the index page.
+`Index.md` is the entry point. It contains courses and their topics in teaching order. Lecture pages are grouped into one folder per course, and each topic is an Obsidian link to a separate Markdown page in that course folder. A topic page should contain all the details of the topic. Some sections are required, as we use them to generate the index page.
 
 
 ## Topic page format
