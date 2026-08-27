@@ -1,7 +1,3 @@
----
-weeks: 2
----
-
 ## Subtopics
 
 - Conditional encoder-decoder generation

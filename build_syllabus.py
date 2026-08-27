@@ -24,7 +24,6 @@ import markdown  # pyright: ignore[reportMissingModuleSource]
 EXPECTED_WEEKS = 15
 SECTION_RE = re.compile(r"(?m)^##\s+(.+?)\s*$")
 COURSE_RE = re.compile(r"(?m)^#\s+(.+?)\s*$")
-WIKILINK_RE = re.compile(r"(?m)^\s*\d+\.\s+\[\[([^]]+)]]\s*$")
 WIKILINK_INLINE_RE = re.compile(r"!?\[\[([^]]+)]]")
 ORDERED_ITEM_RE = re.compile(r"^\d+\.\s+(.+)$")
 ASSIGNMENT_TITLE_RE = re.compile(r"^\*\*(.+?[.!?])\*\*(?:\s+|$)")
@@ -57,9 +56,15 @@ class Topic:
 
 
 @dataclass(frozen=True)
+class TopicGroup:
+    topics: list[Topic]
+    weeks: int
+
+
+@dataclass(frozen=True)
 class Course:
     title: str
-    topics: list[Topic]
+    topic_groups: list[TopicGroup]
     placeholder: str | None = None
 
 
@@ -112,27 +117,59 @@ def parse_topic(path: Path, link: TopicLink) -> Topic:
     return Topic(link=link, source_path=path, weeks=weeks, sections=sections)
 
 
+def parse_topic_links(item: str) -> list[TopicLink]:
+    matches = list(WIKILINK_INLINE_RE.finditer(item))
+    if not matches:
+        raise BuildError(f"Topic list item must contain a wikilink: {item}")
+
+    for index, match in enumerate(matches):
+        separator = item[
+            matches[index - 1].end() if index else 0 : match.start()
+        ].strip()
+        if (index == 0 and separator) or (index > 0 and separator not in {",", ";"}):
+            raise BuildError(
+                "Topics in one week must be separated by a comma or semicolon: "
+                f"{item}"
+            )
+
+    if item[matches[-1].end() :].strip():
+        raise BuildError(f"Unexpected text after topic wikilink: {item}")
+
+    return [parse_wikilink(match.group(1)) for match in matches]
+
+
 def parse_courses(index_path: Path) -> list[Course]:
     source_dir = index_path.parent
     courses: list[Course] = []
 
     for title, body in split_by_headings(index_path.read_text(encoding="utf-8"), COURSE_RE):
-        link_values = cast(list[str], WIKILINK_RE.findall(body))
-        links = [parse_wikilink(value) for value in link_values]
-        if not links:
-            courses.append(Course(title=title, topics=[], placeholder=body or "TODO"))
+        group_links = [
+            parse_topic_links(match.group(1).strip())
+            for line in body.splitlines()
+            if (match := ORDERED_ITEM_RE.match(line.strip()))
+        ]
+        if not group_links:
+            courses.append(Course(title=title, topic_groups=[], placeholder=body or "TODO"))
             continue
 
-        topics = [
-            parse_topic(source_dir / f"{link.target}.md", link)
-            for link in links
-        ]
-        total_weeks = sum(topic.weeks for topic in topics)
+        topic_groups: list[TopicGroup] = []
+        for links in group_links:
+            topics = [
+                parse_topic(source_dir / f"{link.target}.md", link)
+                for link in links
+            ]
+            topic_groups.append(
+                TopicGroup(
+                    topics=topics,
+                    weeks=1 if len(topics) > 1 else topics[0].weeks,
+                )
+            )
+        total_weeks = sum(group.weeks for group in topic_groups)
         if total_weeks != EXPECTED_WEEKS:
             raise BuildError(
                 f"{title} has {total_weeks} weeks; expected {EXPECTED_WEEKS}"
             )
-        courses.append(Course(title=title, topics=topics))
+        courses.append(Course(title=title, topic_groups=topic_groups))
 
     if not courses:
         raise BuildError(f"No courses found in {index_path}")
@@ -240,11 +277,16 @@ def topic_output_path(topic: Topic, output_dir: Path) -> Path:
     return (output_dir / topic.link.target).with_suffix(".html")
 
 
-def render_topic_rows(topic: Topic, first_week: int, output_dir: Path) -> str:
+def render_topic_sections(topic: Topic) -> str:
     subtopics = render_markdown_block(topic.sections["Subtopics"])
     extra = topic.sections.get("Extra topics", "").strip()
     if extra:
         subtopics += '\n<p class="extra-label">Extra:</p>\n' + render_markdown_block(extra)
+    return subtopics
+
+
+def render_topic_rows(topic: Topic, first_week: int, output_dir: Path) -> str:
+    subtopics = render_topic_sections(topic)
 
     assignment = render_assignment_titles(topic.sections["Assignment"])
     topic_url = relative_url(topic_output_path(topic, output_dir), output_dir)
@@ -268,17 +310,47 @@ def render_topic_rows(topic: Topic, first_week: int, output_dir: Path) -> str:
     return "\n".join(rows)
 
 
+def render_topic_group(group: TopicGroup, week: int, output_dir: Path) -> str:
+    if len(group.topics) == 1:
+        return render_topic_rows(group.topics[0], week, output_dir)
+
+    topic_links: list[str] = []
+    subtopics: list[str] = []
+    assignments: list[str] = []
+    for topic in group.topics:
+        topic_url = relative_url(topic_output_path(topic, output_dir), output_dir)
+        topic_label = html.escape(topic.link.label)
+        topic_link = f'<a href="{topic_url}">{topic_label}</a>'
+        topic_links.append(f"<li>{topic_link}</li>")
+        subtopics.append(
+            f'<p class="group-label">{topic_link}</p>{render_topic_sections(topic)}'
+        )
+        assignments.append(
+            f'<p class="group-label">{topic_link}</p>'
+            f'{render_assignment_titles(topic.sections["Assignment"])}'
+        )
+
+    return (
+        '<tr class="topic-start">'
+        f'<td class="num">{week:02d}</td>'
+        f'<td class="topic"><ul class="topic-group">{"".join(topic_links)}</ul></td>'
+        f'<td>{"".join(subtopics)}</td>'
+        f'<td>{"".join(assignments)}</td>'
+        "</tr>"
+    )
+
+
 def render_course(course: Course, output_dir: Path) -> str:
     course_id = slugify(course.title)
     heading = f'<h2 class="course-title" id="{course_id}">{html.escape(course.title)}</h2>'
-    if not course.topics:
+    if not course.topic_groups:
         return heading + f'\n<p class="meta">{render_inline(course.placeholder or "TODO")}</p>'
 
     rows: list[str] = []
     week = 1
-    for topic in course.topics:
-        rows.append(render_topic_rows(topic, week, output_dir))
-        week += topic.weeks
+    for group in course.topic_groups:
+        rows.append(render_topic_group(group, week, output_dir))
+        week += group.weeks
 
     return f"""{heading}
 <table>
@@ -402,6 +474,10 @@ td {
 tbody tr.topic-start:not(:first-child) td { border-top: 1px dashed var(--dim); }
 td.num { color: var(--dim); }
 td.topic { font-weight: bold; }
+td ul.topic-group {
+  margin: 0;
+  padding-left: 1.3rem;
+}
 td ul.compact,
 td ol {
   margin: 0;
@@ -415,6 +491,11 @@ td p { margin: 0.2rem 0; }
   font-weight: bold;
   margin-top: 0.65rem;
 }
+.group-label {
+  font-weight: bold;
+  margin-top: 0.75rem;
+}
+.group-label:first-child { margin-top: 0; }
 .meta {
   color: var(--dim);
   font-size: 0.85rem;
@@ -571,7 +652,12 @@ def write_topic_pages(
     index_output: Path,
     title: str,
 ) -> None:
-    topics = {topic.source_path: topic for course in courses for topic in course.topics}
+    topics = {
+        topic.source_path: topic
+        for course in courses
+        for group in course.topic_groups
+        for topic in group.topics
+    }
     for topic in topics.values():
         destination = topic_output_path(topic, output_dir)
         destination.parent.mkdir(parents=True, exist_ok=True)

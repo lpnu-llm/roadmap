@@ -14,9 +14,8 @@
 
 ## Assignment
 
-1. **Implement next-token training objective.** Implement the next-token training objective for a small tokenized corpus. Verify shifted inputs and targets, causal masking, average cross-entropy, and perplexity with unit tests.
+1. **Implement a contextual spellchecker.** You will be given a sentence with a spelling mistake in it and a set of candidate correction. Train a small n-gram model and user perplixity to select the correct candidate.
 2. **Analyze token-level model loss.** Compare token-level loss across frequent tokens, rare tokens, sentence beginnings, and sentence endings. Explain where perplexity is useful and where it can be misleading.
-3. * **Derive softmax cross-entropy gradients.** Derive the gradient of softmax cross-entropy with respect to the logits and verify it numerically.
 
 ## Extra topics
 

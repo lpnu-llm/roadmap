@@ -6,6 +6,15 @@ The site is redeployed on every push to the `main` branch.
 
 `Index.md` is the entry point. It contains courses and their topics in teaching order. Lecture pages are grouped into one folder per course, and each topic is an Obsidian link to a separate Markdown page in that course folder. A topic page should contain all the details of the topic. Some sections are required, as we use them to generate the index page.
 
+To schedule several topics in the same week, put their wikilinks in one numbered item and separate them with commas or semicolons:
+
+```md
+5. [[Language modeling]], [[N-gram language models]]
+6. [[Recurrent neural language models]]; [[Sequence-to-sequence models]]
+```
+
+A grouped item always occupies one week. A standalone topic may span several weeks through its `weeks` frontmatter.
+
 
 ## Topic page format
 
