@@ -1,0 +1,4 @@
+torch>=2.2
+safetensors>=0.4.5
+tokenizers>=0.20
+huggingface-hub>=0.27
