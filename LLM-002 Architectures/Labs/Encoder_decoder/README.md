@@ -78,6 +78,64 @@ Load `safetensor_encoder_decoder.safetensors`. Module names must match its
 neutral hierarchy: `tokens`, `encoder_units`, `decoder_units`, `self_mix`,
 `cross_mix`, `feed_in`, `feed_out`, and the final normalization modules.
 
+## Input and output examples
+
+### Source input
+
+Tokenizing the translation instruction produces:
+
+```python
+input_ids = torch.tensor([[
+    13959, 1566, 12, 2968, 10, 37, 629, 19, 1245, 1
+]])
+# translate English to German: The house is nice </s>
+```
+
+The source has shape `[1, 10]`. `encode(input_ids)` returns encoder memory with
+shape `[1, 10, 512]` plus the source padding mask.
+
+### Teacher-forced `forward()`
+
+`forward()` requires a separate, already shifted decoder input:
+
+```python
+decoder_input_ids = torch.tensor([[0, 3, 15, 1]])  # shape [1, 4]
+output = model(input_ids, decoder_input_ids)
+```
+
+It returns:
+
+```python
+ModelOutput(
+    logits=...,                 # shape [1, 4, 32_128]
+    encoder_hidden_states=...,  # shape [1, 10, 512]
+    decoder_hidden_states=...,  # shape [1, 4, 512]
+)
+```
+
+The logits follow the decoder length, not the source length. At decoder
+position `i`, they predict the target token for that position.
+
+### `generate()`
+
+Generation receives only the source IDs. It creates the target sequence from
+`decoder_start_id` and returns target IDs, not source IDs followed by target
+IDs:
+
+```python
+generated = model.generate(input_ids, max_new_tokens=12)
+
+# decoder_start_id, generated target tokens, eos_id
+generated = torch.tensor([[0, 644, 4598, 229, 9685, 1]])
+```
+
+```text
+Source: translate English to German: The house is nice
+Output: Das Haus ist schön
+```
+
+The encoder memory is computed once and reused for every decoder step.
+
 ## Completion criteria
 
 - Implement every TODO in `model.py`.

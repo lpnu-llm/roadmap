@@ -94,6 +94,60 @@ largest value, append that token, and stop at `eos_id` or the requested length.
 Optional temperature and top-k sampling may be implemented afterward. A KV
 cache is not required for the reference lab.
 
+## Input and output examples
+
+### `forward()`
+
+Tokenizing `Once upon a time` produces:
+
+```python
+input_ids = torch.tensor([[
+    50281, 10758, 2220, 247, 673, 50282
+]])
+# tokens: [CLS] Once Ġupon Ġa Ġtime [SEP]
+```
+
+Calling `model(input_ids)` returns:
+
+```python
+ModelOutput(
+    logits=...,         # shape [1, 6, 50_368]
+    hidden_states=...,  # shape [1, 6, 1_024]
+)
+```
+
+`logits[0, position]` predicts the token following that position. For
+generation, only `logits[:, -1]` is used to choose the next token.
+
+### `generate()`
+
+With greedy decoding and three new tokens:
+
+```python
+generated = model.generate(input_ids, max_new_tokens=3, temperature=0)
+```
+
+The verified output is:
+
+```python
+generated = torch.tensor([[
+    50281, 10758, 2220, 247, 673, 50282, 13, 627, 369
+]])
+```
+
+```text
+Input:  Once upon a time
+Output: Once upon a time, there was
+```
+
+The generated tensor contains the original six-token prefix followed by three
+new IDs. Its shape is therefore `[1, 9]`; generation does not return a
+`ModelOutput`.
+
+For a batch, every row receives one new token per iteration. Generation stops
+when the requested count is reached, the maximum sequence length is reached,
+or every row produces `eos_id` in the same iteration.
+
 ## Completion criteria
 
 - All TODOs in `model.py` are implemented.
