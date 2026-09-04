@@ -84,6 +84,71 @@ tensor names, including `tokens`, `units`, `mix`, `expand`, and `contract`.
 The token table has more stored rows than the tokenizer uses. Return only the
 first `vocabulary_size` logits.
 
+## Input and output examples
+
+### Ordinary encoder input
+
+Tokenizing `A short example` produces five IDs, including the boundary tokens:
+
+```python
+input_ids = torch.tensor([[
+    50281, 34, 2159, 1650, 50282
+]])
+# tokens: [CLS] A Ġshort Ġexample [SEP]
+
+attention_mask = torch.tensor([[
+    True, True, True, True, True
+]])
+```
+
+Calling `model(input_ids, attention_mask)` returns:
+
+```python
+ModelOutput(
+    logits=...,         # shape [1, 5, 50_368]
+    hidden_states=...,  # shape [1, 5, 1_024]
+)
+```
+
+There is one hidden vector and one vocabulary distribution for every input
+position. `forward()` does not append tokens and does not return decoded text.
+
+### Masked-token prediction
+
+For masked-language inference:
+
+```text
+Input text:       Paris is the [MASK] of France.
+Masked position:  4
+Predicted token:  capital
+```
+
+```python
+predicted_id = output.logits[0, 4].argmax()  # 5347
+```
+
+The complete input has shape `[1, 9]`, so both `logits` and `hidden_states`
+also have sequence length 9. Only the logits at the masked position are needed
+for this prediction.
+
+### Padded batches
+
+Padding remains present in `input_ids`, while `attention_mask=False` prevents
+it from being used as an attention key:
+
+```python
+input_ids = torch.tensor([
+    [50281, 34, 2159, 1650, 50282],
+    [50281,    34, 50282, 50283, 50283],
+])
+attention_mask = torch.tensor([
+    [True, True, True, True, True],
+    [True, True, True, False, False],
+])
+```
+
+The returned shapes are still `[2, 5, 50_368]` and `[2, 5, 1_024]`.
+
 ## Completion criteria
 
 - All TODOs in `model.py` are implemented.

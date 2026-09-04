@@ -114,6 +114,64 @@ declared in `model.json`.
 The stored token table has more rows than the tokenizer vocabulary. It is also
 the output projection weight. Return only the first `vocabulary_size` logits.
 
+## Input and output examples
+
+### `forward()`
+
+Tokenizing `Once upon a time` produces:
+
+```python
+input_ids = torch.tensor([[
+    9297, 12683, 312, 1133
+]])
+# tokens: Once Ġupon Ġa Ġtime
+```
+
+Calling `model(input_ids)` returns:
+
+```python
+ModelOutput(
+    logits=...,         # shape [1, 4, 49_152]
+    hidden_states=...,  # shape [1, 4, 1_024]
+    router_logits=(...),
+)
+```
+
+`router_logits` is a tuple with one tensor per executed unit:
+
+```python
+len(output.router_logits) == 25
+output.router_logits[0].shape == (1, 4, 32)
+```
+
+Each `[1, 4, 32]` tensor contains one score for every expert at every token.
+The eight largest scores select the active experts. Router logits are useful
+for inspection; generation uses the vocabulary `logits`.
+
+Although the tied token table has 65,536 rows, the returned vocabulary axis is
+49,152 because storage-only rows are sliced away.
+
+### `generate()`
+
+With greedy decoding and three new tokens:
+
+```python
+generated = model.generate(input_ids, max_new_tokens=3, temperature=0)
+
+generated = torch.tensor([[
+    9297, 12683, 312, 1133, 30, 2017, 1597
+]])
+```
+
+```text
+Input:  Once upon a time
+Output: Once upon a time, there was
+```
+
+The output contains the four-token input prefix followed by three generated
+tokens, giving shape `[1, 7]`. `generate()` returns token IDs directly, whereas
+`forward()` returns `ModelOutput`.
+
 ## Completion criteria
 
 - All `NotImplementedError` sites in `model.py` are implemented.

@@ -112,6 +112,116 @@ The process is monotonic: a revealed token is not masked again.
 | Confidence | `[batch, sequence]` |
 | Remaining masks | `[batch]` |
 
+Input and output always have the same `[batch, sequence]` shape. Diffusion
+replaces tokens in existing positions; it never appends tokens or changes the
+sequence length.
+
+## Input and output examples
+
+### Text infilling
+
+The CLI input must contain at least one literal `[MASK]` token:
+
+```text
+Input:  Paris is the [MASK] of France.
+Output: Paris is the capital of France.
+```
+
+With this tokenizer, the input and final output are:
+
+```python
+input_ids = torch.tensor([[
+    50281, 36062, 310, 253, 50284, 273, 6181, 15, 50282
+]])
+
+#                        [MASK]
+editable_mask = torch.tensor([[
+    False, False, False, False, True, False, False, False, False
+]])
+
+final_ids = torch.tensor([[
+    50281, 36062, 310, 253, 5347, 273, 6181, 15, 50282
+]])
+#                                  capital
+```
+
+Only position 4 is editable. The reverse process must preserve every other
+token ID exactly.
+
+### One `diffusion_step`
+
+The following uses small illustrative token IDs. Here, `99` is `[MASK]`, `1`
+and `2` are protected boundary tokens, and there are four editable positions:
+
+```python
+input_ids = torch.tensor([[1, 99, 99, 99, 99, 2]])
+editable_mask = torch.tensor([[False, True, True, True, True, False]])
+```
+
+Suppose the encoder samples these candidates and confidences:
+
+```python
+sampled_ids = torch.tensor([[8, 10, 11, 12, 13, 7]])
+confidence  = torch.tensor([[0.2, .95, .40, .70, .85, .3]])
+```
+
+For `step=1` and `total_steps=4`, the cosine schedule requests three remaining
+masks. The step therefore reveals one token: candidate `10`, because `.95` is
+the highest confidence among the four currently masked positions.
+
+```python
+DiffusionStepOutput(
+    input_ids=torch.tensor([[1, 10, 99, 99, 99, 2]]),
+    sampled_ids=torch.tensor([[8, 10, 11, 12, 13, 7]]),
+    confidence=torch.tensor([[0.2, .95, .40, .70, .85, .3]]),
+    remaining_masks=torch.tensor([3]),
+)
+```
+
+Candidates at protected or already revealed positions are ignored. Only
+positions satisfying both `editable_mask` and `input_ids == mask_id` may
+change.
+
+### Complete reverse trajectory
+
+With four editable positions and four steps, one possible trajectory is:
+
+```text
+history[0]: [CLS] [MASK] [MASK] [MASK] [MASK] [SEP]
+history[1]: [CLS] The    [MASK] [MASK] [MASK] [SEP]
+history[2]: [CLS] The    small  [MASK] [MASK] [SEP]
+history[3]: [CLS] The    small  brown  dog    [SEP]
+history[4]: [CLS] The    small  brown  dog    [SEP]
+```
+
+`diffuse()` returns:
+
+```python
+DiffusionOutput(
+    input_ids=history[-1],       # final sequence with no editable [MASK]
+    history=tuple(history),      # initial state plus one state per step
+)
+```
+
+Consequently, `len(output.history) == steps + 1` and
+`output.input_ids.shape == input_ids.shape`.
+
+### Forward corruption
+
+`corrupt()` takes clean token IDs and returns another tensor of the same shape:
+
+```text
+clean_ids:  [CLS] The small brown dog [SEP]
+editable:          yes yes   yes   yes
+
+at low noise:  [CLS] The [MASK] brown dog    [SEP]
+at high noise: [CLS] [MASK] [MASK] [MASK] dog [SEP]
+at final noise:[CLS] [MASK] [MASK] [MASK] [MASK] [SEP]
+```
+
+`False` positions in `editable_mask`, such as `[CLS]` and `[SEP]`, must be
+identical in the input and output.
+
 ## Completion criteria
 
 - Implement every `NotImplementedError` in `diffusion.py`.
